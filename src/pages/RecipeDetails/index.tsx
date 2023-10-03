@@ -45,7 +45,7 @@ function RecipeDetails(props: RecipeDetailsProps) {
         ))}
       </ul>
       <h2>Ingredients:</h2>
-      <ul>
+      <ul className='instructions'>
         {recipe.instructions.map((instructions, index) => (
           <li key={index}>{instructions}</li>
         ))}

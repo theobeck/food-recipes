@@ -34,6 +34,10 @@
   justify-content: center;
 }
 
+.main-page ul {
+  list-style-type: none;
+}
+
 .main-page .recipe-card {
   border: 1px solid #ddd;
   border-radius: 10px;
