@@ -1,6 +1,4 @@
-// MainPage.tsx
-import React from 'react';
-import { Link } from 'react-router-dom'; // Assuming you're using React Router
+import RecipeListItem from "../../components/RecipeItem";
 
 interface Recipe {
   id: number;
@@ -18,12 +16,7 @@ function MainPage(props: MainPageProps) {
       <h1>Recipes</h1>
       <ul>
         {props.recipes.map((recipe) => (
-          <li key={recipe.id}>
-            <Link to={`/recipe/${recipe.id}`}>
-              <img src={recipe.imageUrl} alt={recipe.name} />
-              {recipe.name}
-            </Link>
-          </li>
+          <RecipeListItem key={recipe.id} recipe={recipe} />
         ))}
       </ul>
     </div>
