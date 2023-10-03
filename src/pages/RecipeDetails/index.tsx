@@ -6,6 +6,7 @@ interface Recipe {
   name: string;
   description: string;
   ingredients: string[];
+  instructions: string[];
 }
 
 interface RecipeDetailsProps {
@@ -40,6 +41,12 @@ function RecipeDetails(props: RecipeDetailsProps) {
       <ul>
         {recipe.ingredients.map((ingredient, index) => (
           <li key={index}>{ingredient}</li>
+        ))}
+      </ul>
+      <h2>Ingredients:</h2>
+      <ul>
+        {recipe.instructions.map((instructions, index) => (
+          <li key={index}>{instructions}</li>
         ))}
       </ul>
     </div>
