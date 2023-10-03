@@ -1,35 +1,40 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React from 'react';
+import recipesData from '../Mockup-data.json';
 
-function App() {
-  const [count, setCount] = useState(0)
-
-  return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+interface Recipe {
+  id: number;
+  name: string;
+  description: string;
+  ingredients: string[];
+  instructions: string[];
 }
 
-export default App
+function RecipeList() {
+  return (
+    <div>
+      <h1>Recipes</h1>
+      <ul>
+        {recipesData.recipes.map((recipe: Recipe) => (
+          <li key={recipe.id}>
+            <h2>{recipe.name}</h2>
+            <p>{recipe.description}</p>
+            <h3>Ingredients:</h3>
+            <ul>
+              {recipe.ingredients.map((ingredient, index) => (
+                <li key={index}>{ingredient}</li>
+              ))}
+            </ul>
+            <h3>Instructions:</h3>
+            <ol>
+              {recipe.instructions.map((step, index) => (
+                <li key={index}>{step}</li>
+              ))}
+            </ol>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default RecipeList;
