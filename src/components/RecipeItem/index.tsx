@@ -1,9 +1,23 @@
+import { Link } from 'react-router-dom';
 
-export default function RecipeItem({ recipe }: { recipe: Recipe }) {
+interface Recipe {
+  id: number;
+  name: string;
+  imageUrl: string;
+}
+interface RecipeListItemProps {
+  recipe: Recipe;
+}
+
+export default function RecipeListItem(props: RecipeListItemProps) {
+  const { id, name, imageUrl } = props.recipe;
+
   return (
-    <div className="recipe-item">
-      <h2>{recipe.name}</h2>
-      <p>{recipe.description}</p>
-    </div>
-  )
+    <li key={id}>
+      <Link to={`/recipe/${id}`}>
+        <img src={imageUrl} alt={name} />
+        {name}
+      </Link>
+    </li>
+  );
 }
