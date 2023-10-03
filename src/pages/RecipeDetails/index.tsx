@@ -1,5 +1,6 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
+import './index.css';
 
 interface Recipe {
   id: number;
@@ -32,7 +33,7 @@ function RecipeDetails(props: RecipeDetailsProps) {
   }
 
   return (
-    <div>
+    <div className="recipe-details">
       <h1>{recipe.name}</h1>
       {/*    */}
       <p>{recipe.description}</p>

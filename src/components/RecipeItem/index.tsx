@@ -1,10 +1,14 @@
+// RecipeListItem.tsx
+import React from 'react';
 import { Link } from 'react-router-dom';
+import './index.css'; // Import the CSS file
 
 interface Recipe {
   id: number;
   name: string;
   imageUrl: string;
 }
+
 interface RecipeListItemProps {
   recipe: Recipe;
 }
@@ -14,9 +18,9 @@ export default function RecipeListItem(props: RecipeListItemProps) {
 
   return (
     <li key={id}>
-      <Link to={`/recipe/${id}`}>
+      <Link to={`/recipe/${id}`} className="recipe-link">
         <img src={imageUrl} alt={name} />
-        {name}
+        <span className="recipe-name">{name}</span>
       </Link>
     </li>
   );

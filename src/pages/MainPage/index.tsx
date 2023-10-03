@@ -1,4 +1,5 @@
 import RecipeListItem from "../../components/RecipeItem";
+import './index.css'
 
 interface Recipe {
   id: number;
@@ -12,13 +13,16 @@ interface MainPageProps {
 
 function MainPage(props: MainPageProps) {
   return (
-    <div>
-      <h1>Recipes</h1>
-      <ul>
-        {props.recipes.map((recipe) => (
-          <RecipeListItem key={recipe.id} recipe={recipe} />
-        ))}
-      </ul>
+    <div className="main-page">
+      <div className="container">
+        <h1>Recipes</h1>
+        <ul className="recipe-link">
+          {props.recipes.map((recipe) => (
+            <RecipeListItem key={recipe.id} recipe={recipe} />
+          ))}
+        </ul>
+      </div>
+
     </div>
   );
 }
