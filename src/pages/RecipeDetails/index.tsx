@@ -2,6 +2,7 @@ import React from 'react';
 import { useParams } from 'react-router-dom';
 import './index.css';
 import BackButton from '../../components/BackButton';
+import Review from '../../components/Review';
 
 interface Recipe {
   id: number;
@@ -9,6 +10,7 @@ interface Recipe {
   description: string;
   ingredients: string[];
   instructions: string[];
+  reviews: string[];
 }
 
 interface RecipeDetailsProps {
@@ -47,12 +49,23 @@ function RecipeDetails(props: RecipeDetailsProps) {
           <li key={index}>{ingredient}</li>
         ))}
       </ul>
-      <h2>Ingredients:</h2>
+      <h2>Instructions:</h2>
       <ul className='instructions'>
         {recipe.instructions.map((instructions, index) => (
           <li key={index}>{instructions}</li>
         ))}
       </ul>
+      <div className="review">
+      <p>Review</p>
+        <Review />
+        
+        <h2>Reviews</h2>
+        <ul>
+          {recipe.reviews.map((review, index) => (
+            <li key={index}>{review}</li>
+          ))}
+        </ul>
+        </div>
     </div>
     </>
   );
