@@ -1,7 +1,7 @@
 // RecipeListItem.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './index.css'; // Import the CSS file
+import './index.css'; 
 
 interface Recipe {
   id: number;

@@ -8,6 +8,15 @@ export default function BackButton() {
     nav(-1);
   }
 
-  return <img className='backBtn' src={BackBtn} onClick={goBack} alt="Back Button" />
-      
+  return <img 
+  tabIndex={1} 
+  className='backBtn' 
+  src={BackBtn} 
+  onClick={goBack} 
+  onKeyDown={(e) => {
+    if (e.key === 'Enter') {
+      goBack();
+    }
+  }} alt="Back Button" />
 }
+      
