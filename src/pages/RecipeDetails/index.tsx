@@ -1,6 +1,7 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import './index.css';
+import BackButton from '../../components/BackButton';
 
 interface Recipe {
   id: number;
@@ -34,6 +35,8 @@ function RecipeDetails(props: RecipeDetailsProps) {
   }
 
   return (
+    <>
+    <BackButton />
     <div className="recipe-details">
       <h1>{recipe.name}</h1>
       {/*    */}
@@ -51,6 +54,7 @@ function RecipeDetails(props: RecipeDetailsProps) {
         ))}
       </ul>
     </div>
+    </>
   );
 }
 
