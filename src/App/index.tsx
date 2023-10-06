@@ -21,7 +21,7 @@ function App() {
           path="/recipe/:id"
           element={<RecipeDetails recipes={recipes} />}
         />
-        <Route path="/" element={<MainPage recipes={recipes} />} />
+        <Route path="/" element={<MainPage recipes={recipes} itemsPerPage={3} />} />
       </Routes>
     </Router>
   );
