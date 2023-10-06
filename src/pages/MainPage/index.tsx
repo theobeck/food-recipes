@@ -1,6 +1,8 @@
 import RecipeListItem from "../../components/RecipeItem";
+import Filter from "../../components/Filter";
 import './index.css';
 import React, { useState } from 'react';
+import { Option } from "react-dropdown";
 
 interface Recipe {
   id: number;
@@ -26,6 +28,13 @@ function MainPage({ recipes, itemsPerPage }: MainPageProps) {
     <div className="main-page">
       <div className="container">
         <h1>Recipes</h1>
+        <div className= "filterAndSearch">
+        <Filter onChange={(option: Option) => console.log(option)} />
+
+        {/*Adding a proper search bar in next iteration*/}
+        <input type="text" placeholder="Search" />
+        
+        </div>
         <ul className="recipe-link">
           {displayedRecipes.map((recipe) => (
             <RecipeListItem key={recipe.id} recipe={recipe} />
