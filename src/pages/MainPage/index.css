@@ -9,17 +9,13 @@
 }
 
 .recipe-link {
-  /* text-decoration: none;
-    color: #d400ff; */
+  text-decoration: none;
+  color: #333;
   font-weight: bold;
 }
 
-.recipe-link:hover {
-  text-decoration: underline;
-}
-
 .main-page {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -30,8 +26,9 @@
 
 .main-page .recipe-list {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
 }
 
 .main-page ul {
@@ -51,4 +48,45 @@
 
 .main-page .recipe-card:hover {
   transform: scale(1.05);
+}
+
+.filterAndSearch {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.filterAndSearch input[type='text'] {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.filterAndSearch input[type='text']:focus {
+  outline: none;
+  border: 1px solid #aaa;
+}
+.filterAndSearch .react-dropdown-select {
+  width: 30%;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .filterAndSearch {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filterAndSearch input[type='text'] {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+  .filterAndSearch .react-dropdown-select {
+    width: 100%;
+  }
 }
