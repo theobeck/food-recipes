@@ -3,6 +3,7 @@
       {
         "id": 1,
         "name": "Pasta Primavera",
+        "imageUrl" : "https://www.cookingclassy.com/wp-content/uploads/2018/09/pasta-primavera-2.jpg",
         "description": "A delightful pasta dish with a mix of spring vegetables.",
         "ingredients": [
           "250g spaghetti",
@@ -27,6 +28,7 @@
       {
         "id": 2,
         "name": "Beef Stroganoff",
+        "imageUrl": "https://www.fromvalerieskitchen.com/wordpress/wp-content/uploads/2019/10/Beef-Stroganoff-1200-5.jpg", 
         "description": "A classic Russian dish with tender beef in a creamy sauce.",
         "ingredients": [
           "500g beef",
@@ -51,6 +53,7 @@
       {
         "id": 3,
         "name": "Caesar Salad",
+        "imageUrl": "https://s23209.pcdn.co/wp-content/uploads/2023/01/220905_DD_Chx-Caesar-Salad_051.jpg",
         "description": "A delightful salad with crispy croutons and chicken.",
         "ingredients": [
           "1 romaine lettuce",
@@ -73,6 +76,7 @@
       {
         "id": 4,
         "name": "Taco Thursday",
+        "imageUrl": "https://www.cookingclassy.com/wp-content/uploads/2019/02/taco-salad-13.jpg",
         "description": "An easy and delicious taco dish for a busy weekday.",
         "ingredients": [
           "500g ground beef",
@@ -97,6 +101,7 @@
       {
         "id": 5,
         "name": "Sushi Rolls",
+        "imageUrl":"https://www.afarmgirlsdabbles.com/wp-content/uploads/2022/10/Dragon-Roll38797s_1400-540x720.jpg",
         "description": "Fresh and delicious sushi rolls with fish and vegetables.",
         "ingredients": [
           "Nori seaweed sheets",
@@ -122,6 +127,7 @@
       {
         "id": 6,
         "name": "Grilled Chicken Salad",
+        "imageUrl": "https://www.dinneratthezoo.com/wp-content/uploads/2020/12/grilled-chicken-salad-4.jpg",
         "description": "A healthy and flavorful salad with grilled chicken and fresh vegetables.",
         "ingredients": [
           "2 chicken breast fillets",
@@ -145,6 +151,7 @@
       {
         "id": 7,
         "name": "Vegetarian Lasagna",
+        "imageUrl": "https://jessicainthekitchen.com/wp-content/uploads/2021/06/Vegan-Lasagna-17.jpg",
         "description": "A tasty vegetarian lasagna with succulent vegetables and cheese.",
         "ingredients": [
           "Lasagna noodles",

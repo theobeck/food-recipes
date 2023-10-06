@@ -26,11 +26,11 @@ function MainPage({ recipes, itemsPerPage }: MainPageProps) {
     <div className="main-page">
       <div className="container">
         <h1>Recipes</h1>
-        <ul className="recipe-link">
+        <div className="recipe-link">
           {displayedRecipes.map((recipe) => (
             <RecipeListItem key={recipe.id} recipe={recipe} />
           ))}
-        </ul>
+        </div>
         {displayedRecipes.length < recipes.length && (
           <button onClick={loadMore}>Load More</button>
         )}

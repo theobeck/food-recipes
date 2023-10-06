@@ -4,7 +4,8 @@
   color: #333;
   font-weight: bold;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   align-items: center;
   text-align: center;
   border: 1px solid #ddd;
@@ -29,4 +30,8 @@
 
 .recipe-name {
   font-size: 18px;
+}
+
+img {
+  width: 100px;
 }

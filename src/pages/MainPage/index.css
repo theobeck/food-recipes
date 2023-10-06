@@ -9,17 +9,13 @@
 }
 
 .recipe-link {
-  /* text-decoration: none;
-    color: #d400ff; */
+  text-decoration: none;
+  color: #333;
   font-weight: bold;
 }
 
-.recipe-link:hover {
-  text-decoration: underline;
-}
-
 .main-page {
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
@@ -30,8 +26,9 @@
 
 .main-page .recipe-list {
   display: flex;
+  justify-content: space-between;
   flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: row;
 }
 
 .main-page ul {
