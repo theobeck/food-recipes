@@ -11,14 +11,11 @@ body {
   margin: auto;
 }
 
-.main-page h1 {
-  font-size: 2.5rem;
-  font-weight: 100;
-  margin-bottom: 50px;
-}
-
 .container {
   text-align: center;
+}
+.main-page #logo {
+  width: 50vh;
 }
 
 .recipe-link {
