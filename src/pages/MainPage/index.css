@@ -46,3 +46,44 @@
 .main-page .recipe-card:hover {
   transform: scale(1.05);
 }
+
+.filterAndSearch {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.filterAndSearch input[type='text'] {
+  width: 60%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.filterAndSearch input[type='text']:focus {
+  outline: none;
+  border: 1px solid #aaa;
+}
+.filterAndSearch .react-dropdown-select {
+  width: 30%;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 768px) {
+  .filterAndSearch {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .filterAndSearch input[type='text'] {
+    width: 80%;
+    margin-bottom: 10px;
+  }
+
+  .filterAndSearch .react-dropdown-select {
+    width: 100%;
+  }
+}
