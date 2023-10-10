@@ -7,6 +7,7 @@ import Review from '../../components/Review';
 interface Recipe {
   id: number;
   name: string;
+  imageUrl: string;
   description: string;
   ingredients: string[];
   instructions: string[];
@@ -40,32 +41,40 @@ function RecipeDetails(props: RecipeDetailsProps) {
     <>
     <BackButton />
     <div className="recipe-details">
-      <h1>{recipe.name}</h1>
-      {/*    */}
-      <p>{recipe.description}</p>
-      <h2>Ingredients:</h2>
-      <ul>
-        {recipe.ingredients.map((ingredient, index) => (
-          <li key={index}>{ingredient}</li>
-        ))}
-      </ul>
-      <h2>Instructions:</h2>
-      <ul className='instructions'>
-        {recipe.instructions.map((instructions, index) => (
-          <li key={index}>{instructions}</li>
-        ))}
-      </ul>
-      <div className="review">
-      <p>Review</p>
-        <Review />
-        
-        <h2>Reviews</h2>
+      <section className='recipe-header'>
+        <img className="header-item" src={recipe.imageUrl} />
+        <div className='header-item'>
+          <h1>{recipe.name}</h1>
+          <p>{recipe.description}</p>
+        </div>
+      </section>
+
+      <section className='recipe-body'>
+
+        <h2>Ingredients:</h2>
         <ul>
-          {recipe.reviews.map((review, index) => (
-            <li key={index}>{review}</li>
+          {recipe.ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
           ))}
         </ul>
-        </div>
+        <h2>Instructions:</h2>
+        <ul className='instructions'>
+          {recipe.instructions.map((instructions, index) => (
+            <li key={index}>{instructions}</li>
+          ))}
+        </ul>
+        <div className="review">
+        <p>Review</p>
+          <Review />
+          
+          <h2>Reviews</h2>
+          <ul>
+            {recipe.reviews.map((review, index) => (
+              <li key={index}>{review}</li>
+            ))}
+          </ul>
+          </div>
+        </section>
     </div>
     </>
   );
