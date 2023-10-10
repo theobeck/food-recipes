@@ -25,9 +25,10 @@
   margin: 3vh;
 }
 
-.recipe-link:hover {
+.recipe-link a:hover {
   text-decoration: none;
   color: #6c6b6b;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 
 .recipe-name {

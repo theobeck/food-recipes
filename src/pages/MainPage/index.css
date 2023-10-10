@@ -45,6 +45,7 @@ body {
 .filterAndSearch input[type='text']:focus {
   outline: none;
   border: 1px solid #aaa;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 .filterAndSearch .react-dropdown-select {
   width: 30%;
