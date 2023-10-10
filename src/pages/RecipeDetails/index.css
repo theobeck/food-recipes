@@ -11,7 +11,10 @@
 }
 
 .recipe-details .recipe-header img {
-  margin: 40px 50px 10px 10px;
+  margin: 70px 50px 10px 50px;
+  align-content: center;
+  max-height: 500px;
+  max-width: 500px;
 }
 
 .recipe-details p {
@@ -45,6 +48,8 @@
 
 .recipe-details .recipe-body {
   margin: 5vh 20vh;
+  padding: 10vh 20vh;
+  background-color: #ffffff;
 }
 
 .recipe-details .instructions {
