@@ -65,7 +65,6 @@ function RecipeDetails(props: RecipeDetailsProps) {
           ))}
         </ul>
         <div className="review">
-        <p>Review</p>
           <Review />
           
           <h2>Reviews</h2>
