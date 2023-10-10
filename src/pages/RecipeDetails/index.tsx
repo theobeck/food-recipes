@@ -45,18 +45,19 @@ function RecipeDetails(props: RecipeDetailsProps) {
         <img className="header-item" src={recipe.imageUrl} />
         <div className='header-item'>
           <h1>{recipe.name}</h1>
-          <p>{recipe.description}</p>
+          <h2>Ingredients:</h2>
+          <ul>
+          {recipe.ingredients.map((ingredient, index) => (
+            <li key={index}>{ingredient}</li>
+          ))}
+        </ul>
         </div>
       </section>
 
       <section className='recipe-body'>
 
-        <h2>Ingredients:</h2>
-        <ul>
-          {recipe.ingredients.map((ingredient, index) => (
-            <li key={index}>{ingredient}</li>
-          ))}
-        </ul>
+        
+        <p>{recipe.description}</p>
         <h2>Instructions:</h2>
         <ul className='instructions'>
           {recipe.instructions.map((instructions, index) => (
