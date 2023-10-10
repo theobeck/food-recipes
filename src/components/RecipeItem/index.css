@@ -1,11 +1,14 @@
 /* RecipeListItem.css */
-.recipe-link {
+div.recipe-link {
   text-decoration: none;
   color: #333;
   font-weight: bold;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  /* flex: 1;
+  justify-content: space-between;
   flex-direction: row;
-  flex-wrap: wrap;
+  flex-wrap: wrap; */
   align-items: center;
   text-align: center;
   border: 1px solid #ddd;
@@ -17,15 +20,26 @@
   transition: transform 0.2s;
 }
 
+a.recipe-link {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+@media screen {
+}
+
 .recipe-link:hover {
   text-decoration: none;
   color: #6c6b6b;
 }
 
 .recipe-link img {
-  max-width: 100%;
-  height: auto;
-  margin-bottom: 10px;
+  width: 250px;
+  height: 250px;
+  object-fit: cover;
 }
 
 .recipe-name {
