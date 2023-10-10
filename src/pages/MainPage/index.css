@@ -1,62 +1,41 @@
-/* MainPage.module.css */
-
 /* Styles for MainPage component */
 
-.container {
-  text-align: center;
+body {
+  background-color: #f0f0f0;
+  color: #333;
   font-family: Arial, sans-serif;
-  color: #333;
-}
-
-.recipe-link {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
 }
 
 .main-page {
-  max-width: 1000px;
-  margin: 0 auto;
+  max-width: 173vh;
+  margin: auto;
 }
 
 .main-page h1 {
   font-size: 2.5rem;
-  margin-bottom: 20px;
+  font-weight: 100;
+  margin-bottom: 50px;
 }
 
-.main-page .recipe-list {
-  display: grid;
-}
-
-.main-page ul {
-  list-style-type: none;
-}
-
-.main-page .recipe-card {
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  margin: 10px;
-  padding: 10px;
+.container {
   text-align: center;
-  background-color: #fff;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
 }
 
-.main-page .recipe-card:hover {
-  transform: scale(1.05);
+.recipe-link {
+  text-decoration: none;
+  font-weight: bold;
 }
 
 .filterAndSearch {
   display: flex;
   justify-content: space-between;
-  width: 80%;
-  margin-bottom: 20px;
+  width: 100%;
+  margin: 0px 25px 20px 15px;
   align-items: center;
 }
 
 .filterAndSearch input[type='text'] {
-  width: 60%;
+  width: 40%;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -66,6 +45,7 @@
 .filterAndSearch input[type='text']:focus {
   outline: none;
   border: 1px solid #aaa;
+  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
 }
 .filterAndSearch .react-dropdown-select {
   width: 30%;

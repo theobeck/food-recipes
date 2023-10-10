@@ -3,7 +3,7 @@
       {
         "id": 1,
         "name": "Pasta Primavera",
-        "imageUrl" : "https://www.cookingclassy.com/wp-content/uploads/2018/09/pasta-primavera-2.jpg",
+        "imageUrl" : "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/healthy-pasta-primaver-35cbc26.jpg?quality=90&webp=true&resize=375,341",
         "description": "A delightful pasta dish with a mix of spring vegetables.",
         "ingredients": [
           "250g spaghetti",
@@ -28,7 +28,7 @@
       {
         "id": 2,
         "name": "Beef Stroganoff",
-        "imageUrl": "https://www.fromvalerieskitchen.com/wordpress/wp-content/uploads/2019/10/Beef-Stroganoff-1200-5.jpg", 
+        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/beefstroganoff-d53f55e.jpg?quality=90&webp=true&resize=375,341", 
         "description": "A classic Russian dish with tender beef in a creamy sauce.",
         "ingredients": [
           "500g beef",
@@ -53,8 +53,8 @@
       {
         "id": 3,
         "name": "Caesar Salad",
-        "imageUrl": "https://s23209.pcdn.co/wp-content/uploads/2023/01/220905_DD_Chx-Caesar-Salad_051.jpg",
-        "description": "A delightful salad with crispy croutons and chicken.",
+        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2023/03/Caesar-salad-dressing-b4247ff.jpg?quality=90&webp=true&resize=375,341",
+        "description": "Caesar salad is a classic and timeless dish that combines crisp romaine lettuce leaves, garlicky croutons, and creamy Caesar dressing for a burst of flavor and texture. This salad is often adorned with grated Parmesan cheese and crowned with grilled chicken or succulent shrimp for added protein. The vibrant green lettuce provides a refreshing crunch, while the savory croutons add a satisfying contrast. The Caesar dressing, a luscious blend of olive oil, anchovies, garlic, and tangy lemon juice, ties everything together with its rich and zesty profile. A Caesar salad is a delightful symphony of taste and a beloved staple on menus worldwide, offering a perfect balance of freshness and indulgence.",
         "ingredients": [
           "1 romaine lettuce",
           "2 chicken breast fillets",
@@ -76,7 +76,7 @@
       {
         "id": 4,
         "name": "Taco Thursday",
-        "imageUrl": "https://www.cookingclassy.com/wp-content/uploads/2019/02/taco-salad-13.jpg",
+        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/spicy-black-bean-tacos-6ac283a.jpg?quality=90&webp=true&resize=375,341",
         "description": "An easy and delicious taco dish for a busy weekday.",
         "ingredients": [
           "500g ground beef",
@@ -101,7 +101,7 @@
       {
         "id": 5,
         "name": "Sushi Rolls",
-        "imageUrl":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrpcSH2SM3H_8I8fHckfEPjlG94WfKXbigHw&usqp=CAU",
+        "imageUrl":"https://images.immediate.co.uk/production/volatile/sites/30/2020/08/sushi-cdb372e.jpg?quality=90&webp=true&resize=375,341",
         "description": "Fresh and delicious sushi rolls with fish and vegetables.",
         "ingredients": [
           "Nori seaweed sheets",
@@ -127,7 +127,7 @@
       {
         "id": 6,
         "name": "Grilled Chicken Salad",
-        "imageUrl": "https://www.dinneratthezoo.com/wp-content/uploads/2020/12/grilled-chicken-salad-4.jpg",
+        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-1031452_11-e7a5417.jpg?quality=90&webp=true&resize=375,341",
         "description": "A healthy and flavorful salad with grilled chicken and fresh vegetables.",
         "ingredients": [
           "2 chicken breast fillets",
@@ -151,7 +151,7 @@
       {
         "id": 7,
         "name": "Vegetarian Lasagna",
-        "imageUrl": "https://jessicainthekitchen.com/wp-content/uploads/2021/06/Vegan-Lasagna-17.jpg",
+        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2022/07/Broccoli-cheese-with-wholemeal-pasta-brown-breadcrumbs-7160fa8.jpg?quality=90&webp=true&resize=375,341",
         "description": "A tasty vegetarian lasagna with succulent vegetables and cheese.",
         "ingredients": [
           "Lasagna noodles",
