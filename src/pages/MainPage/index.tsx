@@ -29,13 +29,13 @@ function MainPage({ recipes, itemsPerPage }: MainPageProps) {
       <div className="container">
         <h1>Recipes</h1>
         <div className= "filterAndSearch">
-        <Filter onChange={(option: Option) => console.log(option)} />
 
         {/*Adding a proper search bar in next iteration*/}
         <input type="text" placeholder="Search" />
         
+        <Filter onChange={(option: Option) => console.log(option)} />
         </div>
-        <ul className="recipe-link">
+        <div className="recipe-link">
           {displayedRecipes.map((recipe) => (
             <RecipeListItem key={recipe.id} recipe={recipe} />
           ))}
