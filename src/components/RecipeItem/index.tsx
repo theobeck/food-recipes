@@ -17,11 +17,11 @@ export default function RecipeListItem(props: RecipeListItemProps) {
   const { id, name, imageUrl } = props.recipe;
 
   return (
-    <li key={id}>
+    <div key={id}>
       <Link to={`/recipe/${id}`} className="recipe-link">
         <img src={imageUrl} alt={name} />
         <span className="recipe-name">{name}</span>
       </Link>
-    </li>
+    </div>
   );
 }
