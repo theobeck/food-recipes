@@ -47,9 +47,15 @@
 }
 
 .recipe-details .recipe-body {
-  margin: 5vh 20vh;
+  margin: 5vh 10vh;
   padding: 10vh 20vh;
   background-color: #ffffff;
+}
+@media screen and (max-width: 768px) {
+  .recipe-details .recipe-body {
+    margin: 0 auto;
+    padding: 0px 0px;
+  }
 }
 
 .recipe-details .instructions {
