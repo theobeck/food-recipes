@@ -3,7 +3,7 @@
   color: #333;
   font-weight: bold;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   align-items: center;
   text-align: center;
   padding: 10px;
@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
-  background-color: white;
+  background-color: #ffffff;
 }
 
 .recipe-link span {
