@@ -14,6 +14,7 @@ function App() {
       .catch((error) => console.error('Error fetching data:', error));
   }, []);
 
+  // Render the component structure for the app
   return (
     <Router>
       <Routes>

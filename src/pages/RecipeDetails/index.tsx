@@ -4,6 +4,7 @@ import './index.css';
 import BackButton from '../../components/BackButton';
 import Review from '../../components/Review';
 
+// Define an interface "Recipe" that looks like a detailed recipe
 interface Recipe {
   id: number;
   name: string;
@@ -14,29 +15,36 @@ interface Recipe {
   reviews: string[];
 }
 
+// Define the properties interface for the RecipeDetails component
 interface RecipeDetailsProps {
   recipes: Recipe[];
 }
 
+// Define the RecipeDetails functional component to show a recipe with its details
 function RecipeDetails(props: RecipeDetailsProps) {
   const { id } = useParams<{ id: string | undefined }>();
 
+  // Check if if "id" is valid
   if (id === undefined) {
     return <div>Invalid URL: Recipe ID is missing.</div>;
   }
 
+  // Parse "id" as an integer
   const parsedId = parseInt(id, 10);
 
+  // Check if the parsed "id" is valid
   if (isNaN(parsedId)) {
     return <div>Invalid URL: Recipe ID is not a valid number.</div>;
   }
 
+  // Find matching recipe by "id" from the list of recipes
   const recipe = props.recipes.find((r) => r.id === parsedId);
 
   if (!recipe) {
     return <div>Recipe not found.</div>;
   }
 
+  // Show the details of the recipe selected
   return (
     <>
     <BackButton />
