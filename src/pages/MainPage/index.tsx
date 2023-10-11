@@ -32,7 +32,7 @@ function MainPage({ recipes, itemsPerPage }: MainPageProps) {
   return (
     <div className="main-page">
       <div className="container">
-        <h1>Recipes</h1>
+        <img id= "logo" src="src\assets\recipesLogo.png" alt="Recipes Logo" />
         <div className= "filterAndSearch">
 
         {/*Adding a proper search bar in next iteration*/}
