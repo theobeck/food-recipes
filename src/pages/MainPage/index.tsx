@@ -46,7 +46,7 @@ function MainPage({ recipes, itemsPerPage }: MainPageProps) {
           ))}
         </div>
         {displayedRecipes.length < recipes.length && (
-          <button onClick={loadMore}>Load More</button>
+          <button id = "loadMore" onClick={loadMore}>Load More</button>
         )}
       </div>
     </div>
