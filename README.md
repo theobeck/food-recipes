@@ -1,27 +1,7 @@
-# React + TypeScript + Vite
+# Documentation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+We have chosen to create a page for recipes. On the main page, the user is presented with a list of dish names along with corresponding images. To view more dishes, the user can click a button that loads additional items. The user can then select a desired dish, which redirects them to a page containing the recipe for preparing this dish. Here, both the list of ingredients and the preparation steps are provided.
 
-Currently, two official plugins are available:
+Additionally, we plan to implement several more features. Within each individual recipe, users should be able to leave a review of the recipe, including a star rating out of five and a comment. On the main page, there should also be the capability to filter which recipes are displayed, and users should be able to search for specific recipes.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+Furthermore, we have chosen to create four different components. The most important one is "RecipeItem," which retrieves values from a hardcoded JSON file and creates an item for each recipe displayed on the main page and on its own recipe page. We intend to transition to fetching recipes from an API instead of our own file in the future. The other components we are planning on using are "Review," "Filter," and "BackButton", but they are not implemented properly yet. Since these will appear on multiple pages, we opted to have them as reusable components.
