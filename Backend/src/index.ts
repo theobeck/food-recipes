@@ -1,5 +1,10 @@
 import { ApolloServer } from '@apollo/server';
 import { startStandaloneServer } from '@apollo/server/standalone';
+import fs from 'fs';
+
+// Read the JSON file containing recipe data
+const data = fs.readFileSync('../mockup-data.json', 'utf8');
+const { recipes } = JSON.parse(data);
 
 // A schema is a collection of type definitions (hence "typeDefs")
 // that together define the "shape" of queries that are executed against
@@ -27,37 +32,15 @@ const typeDefs = `#graphql
   }
   
 `;
-
-const recipes = [
-    {
-      id: '1',
-      name: 'Spaghetti Bolognese',
-      description: 'Classic Italian pasta dish',
-      imageUrl: 'spaghetti.jpg',
-      ingredients: ['spaghetti', 'tomato sauce', 'ground beef', 'onion'],
-      instructions: ['Cook the pasta', 'Prepare the sauce', 'Serve with grated cheese'],
-      reviews: [[5, 'Great recipe!'], [4, 'Would recommend!']]
-    },
-    {
-      id: '2',
-      name: 'Chicken Stir-Fry',
-      description: 'Quick and delicious stir-fry recipe',
-      imageUrl: 'stir-fry.jpg',
-      ingredients: ['chicken', 'vegetables', 'soy sauce', 'rice'],
-      instructions: ['Cook the chicken', 'Stir-fry with vegetables', 'Serve with rice'],
-      reviews: [[5, 'Delicious!']]
-    },
-  ];
   
 
 // Resolvers define how to fetch the types defined in your schema.
 const resolvers = {
     Recipe: {
         reviews: (recipe) => {
-          // Assuming 'recipe' is an object with a 'reviews' field
-          return recipe.reviews.map(([rating, comment]) => {
-            return { rating, comment };
-          });
+            return recipe.reviews.map((review) => {
+                return review; // return the entire review object
+            });
         },
       },
     Query: {
