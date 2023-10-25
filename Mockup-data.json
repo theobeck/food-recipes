@@ -1,178 +1,177 @@
 {
-    "recipes": [
-      {
-        "id": 1,
-        "name": "Pasta Primavera",
-        "imageUrl" : "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/healthy-pasta-primaver-35cbc26.jpg?quality=90&webp=true&resize=375,341",
-        "description": "A delightful pasta dish with a mix of spring vegetables.",
-        "ingredients": [
-          "250g spaghetti",
-          "1 cup broccoli",
-          "1 cup asparagus",
-          "1 cup peas",
-          "2 cloves of garlic",
-          "1/4 cup olive oil",
-          "Salt and pepper to taste"
-        ],
-        "instructions": [
-          "Cook spaghetti according to package instructions until al dente.",
-          "Sauté garlic in olive oil until golden.",
-          "Add broccoli, asparagus, and peas, and sauté until tender.",
-          "Combine vegetables with cooked spaghetti, salt, and pepper."
-        ],
-        "reviews": [
-          "5 Stars : This was a great recipe! I added some chicken and it was delicious.",
-          "4 Stars : I liked this recipe, but I think it could use more seasoning."
-        ]
-      },
-      {
-        "id": 2,
-        "name": "Beef Stroganoff",
-        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/beefstroganoff-d53f55e.jpg?quality=90&webp=true&resize=375,341", 
-        "description": "A classic Russian dish with tender beef in a creamy sauce.",
-        "ingredients": [
-          "500g beef",
-          "1 onion",
-          "1/2 cup mushrooms",
-          "1/2 cup sour cream",
-          "2 tbsp butter",
-          "1 tbsp paprika powder",
-          "Salt and pepper to taste"
-        ],
-        "instructions": [
-          "Slice beef into strips and sauté in butter until browned.",
-          "Chop onions and mushrooms and sauté with the beef until tender.",
-          "Add paprika powder, sour cream, salt, and pepper. Simmer for a few minutes.",
-          "Serve over rice or pasta."
-        ],
-        "reviews": [
-          "5 Stars : This was a great recipe! I added some chicken and it was delicious.",
-          "4 Stars : I liked this recipe, but I think it could use more seasoning."
-        ]
-      },
-      {
-        "id": 3,
-        "name": "Caesar Salad",
-        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2023/03/Caesar-salad-dressing-b4247ff.jpg?quality=90&webp=true&resize=375,341",
-        "description": "Caesar salad is a classic and timeless dish that combines crisp romaine lettuce leaves, garlicky croutons, and creamy Caesar dressing for a burst of flavor and texture. This salad is often adorned with grated Parmesan cheese and crowned with grilled chicken or succulent shrimp for added protein. The vibrant green lettuce provides a refreshing crunch, while the savory croutons add a satisfying contrast. The Caesar dressing, a luscious blend of olive oil, anchovies, garlic, and tangy lemon juice, ties everything together with its rich and zesty profile. A Caesar salad is a delightful symphony of taste and a beloved staple on menus worldwide, offering a perfect balance of freshness and indulgence.",
-        "ingredients": [
-          "1 romaine lettuce",
-          "2 chicken breast fillets",
-          "1 cup croutons",
-          "1/4 cup parmesan cheese",
-          "Caesar dressing"
-        ],
-        "instructions": [
-          "Grill or cook chicken breast fillets until fully cooked.",
-          "Tear lettuce into pieces and mix with croutons and parmesan cheese.",
-          "Slice cooked chicken breast into strips and place on top of the salad.",
-          "Top with Caesar dressing."
-        ],
-        "reviews": [
-          "5 Stars : This was a great recipe! I added some chicken and it was delicious.",
-          "4 Stars : I liked this recipe, but I think it could use more seasoning."
-        ]
-      },
-      {
-        "id": 4,
-        "name": "Taco Thursday",
-        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/spicy-black-bean-tacos-6ac283a.jpg?quality=90&webp=true&resize=375,341",
-        "description": "An easy and delicious taco dish for a busy weekday.",
-        "ingredients": [
-          "500g ground beef",
-          "1 packet taco seasoning",
-          "Taco shells",
-          "Onions",
-          "Tomatoes",
-          "Lettuce",
-          "Shredded cheese",
-          "Sour cream",
-          "Guacamole"
-        ],
-        "instructions": [
-          "Brown the ground beef and add taco seasoning following packet instructions.",
-          "Fill taco shells with ground beef, onions, tomatoes, lettuce, cheese, sour cream, and guacamole to taste."
-        ],
-        "reviews": [
-          "5 Stars : This was a great recipe! I added some chicken and it was delicious.",
-          "4 Stars : I liked this recipe, but I think it could use more seasoning."
-        ]
-      },
-      {
-        "id": 5,
-        "name": "Sushi Rolls",
-        "imageUrl":"https://images.immediate.co.uk/production/volatile/sites/30/2020/08/sushi-cdb372e.jpg?quality=90&webp=true&resize=375,341",
-        "description": "Fresh and delicious sushi rolls with fish and vegetables.",
-        "ingredients": [
-          "Nori seaweed sheets",
-          "Sushi rice",
-          "Salmon",
-          "Cucumber",
-          "Avocado",
-          "Soy sauce",
-          "Wasabi",
-          "Ginger"
-        ],
-        "instructions": [
-          "Prepare sushi rice according to package instructions and let it cool.",
-          "Place a nori seaweed sheet on a bamboo mat and spread a thin layer of rice over it.",
-          "Place salmon, cucumber, and avocado on the rice and roll it up carefully.",
-          "Slice into pieces and serve with soy sauce, wasabi, and ginger."
-        ],
-        "reviews": [
-          "5 Stars : This was a great recipe! I added some chicken and it was delicious.",
-          "4 Stars : I liked this recipe, but I think it could use more seasoning."
-        ]
-      },
-      {
-        "id": 6,
-        "name": "Grilled Chicken Salad",
-        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-1031452_11-e7a5417.jpg?quality=90&webp=true&resize=375,341",
-        "description": "A healthy and flavorful salad with grilled chicken and fresh vegetables.",
-        "ingredients": [
-          "2 chicken breast fillets",
-          "1 cup cherry tomatoes",
-          "1/2 cucumber",
-          "1/4 red onion",
-          "Olive oil",
-          "Balsamic vinegar",
-          "Salt and pepper to taste"
-        ],
-        "instructions": [
-          "Grill chicken breast fillets until fully cooked, then slice them into strips.",
-          "Cut cherry tomatoes in half, cucumber into slices, and thinly slice red onion.",
-          "Toss all ingredients together in a bowl and season with olive oil, balsamic vinegar, salt, and pepper."
-        ],
-        "reviews": [
-          "5 Stars : This was a great recipe! I added some chicken and it was delicious.",
-          "4 Stars : I liked this recipe, but I think it could use more seasoning."
-        ]
-      },
-      {
-        "id": 7,
-        "name": "Vegetarian Lasagna",
-        "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2022/07/Broccoli-cheese-with-wholemeal-pasta-brown-breadcrumbs-7160fa8.jpg?quality=90&webp=true&resize=375,341",
-        "description": "A tasty vegetarian lasagna with succulent vegetables and cheese.",
-        "ingredients": [
-          "Lasagna noodles",
-          "1 zucchini",
-          "1 eggplant",
-          "1 bell pepper",
-          "1 onion",
-          "Tomato sauce",
-          "Shredded cheese"
-        ],
-        "instructions": [
-          "Slice vegetables thinly and sauté them until tender.",
-          "Layer lasagna noodles, vegetables, tomato sauce, and cheese in a baking dish.",
-          "Repeat layers until the dish is full.",
-          "Bake in the oven until the lasagna is golden and bubbly."
-        ],
-        "reviews": [
-          "5 Stars : This was a great recipe! I added some chicken and it was delicious.",
-          "4 Stars : I liked this recipe, but I think it could use more seasoning."
-        ]
-      }
-    ]
-  }
-  
+  "recipes": [
+    {
+      "id": 1,
+      "name": "Pasta Primavera",
+      "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/healthy-pasta-primaver-35cbc26.jpg?quality=90&webp=true&resize=375,341",
+      "description": "A delightful pasta dish with a mix of spring vegetables.",
+      "ingredients": [
+        "250g spaghetti",
+        "1 cup broccoli",
+        "1 cup asparagus",
+        "1 cup peas",
+        "2 cloves of garlic",
+        "1/4 cup olive oil",
+        "Salt and pepper to taste"
+      ],
+      "instructions": [
+        "Cook spaghetti according to package instructions until al dente.",
+        "Sauté garlic in olive oil until golden.",
+        "Add broccoli, asparagus, and peas, and sauté until tender.",
+        "Combine vegetables with cooked spaghetti, salt, and pepper."
+      ],
+      "reviews": [
+        { "rating": 5, "comment": "This was a great recipe! I added some chicken and it was delicious." },
+        { "rating": 4, "comment": "I liked this recipe, but I think it could use more seasoning." }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "Beef Stroganoff",
+      "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/beefstroganoff-d53f55e.jpg?quality=90&webp=true&resize=375,341",
+      "description": "A classic Russian dish with tender beef in a creamy sauce.",
+      "ingredients": [
+        "500g beef",
+        "1 onion",
+        "1/2 cup mushrooms",
+        "1/2 cup sour cream",
+        "2 tbsp butter",
+        "1 tbsp paprika powder",
+        "Salt and pepper to taste"
+      ],
+      "instructions": [
+        "Slice beef into strips and sauté in butter until browned.",
+        "Chop onions and mushrooms and sauté with the beef until tender.",
+        "Add paprika powder, sour cream, salt, and pepper. Simmer for a few minutes.",
+        "Serve over rice or pasta."
+      ],
+      "reviews": [
+        { "rating": 5, "comment": "This was a great recipe! I added some chicken and it was delicious." },
+        { "rating": 4, "comment": "I liked this recipe, but I think it could use more seasoning." }
+      ]
+    },
+    {
+      "id": 3,
+      "name": "Caesar Salad",
+      "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2023/03/Caesar-salad-dressing-b4247ff.jpg?quality=90&webp=true&resize=375,341",
+      "description": "Caesar salad is a classic and timeless dish that combines crisp romaine lettuce leaves, garlicky croutons, and creamy Caesar dressing for a burst of flavor and texture. This salad is often adorned with grated Parmesan cheese and crowned with grilled chicken or succulent shrimp for added protein. The vibrant green lettuce provides a refreshing crunch, while the savory croutons add a satisfying contrast. The Caesar dressing, a luscious blend of olive oil, anchovies, garlic, and tangy lemon juice, ties everything together with its rich and zesty profile. A Caesar salad is a delightful symphony of taste and a beloved staple on menus worldwide, offering a perfect balance of freshness and indulgence.",
+      "ingredients": [
+        "1 romaine lettuce",
+        "2 chicken breast fillets",
+        "1 cup croutons",
+        "1/4 cup parmesan cheese",
+        "Caesar dressing"
+      ],
+      "instructions": [
+        "Grill or cook chicken breast fillets until fully cooked.",
+        "Tear lettuce into pieces and mix with croutons and parmesan cheese.",
+        "Slice cooked chicken breast into strips and place on top of the salad.",
+        "Top with Caesar dressing."
+      ],
+      "reviews": [
+        { "rating": 5, "comment": "This was a great recipe! I added some chicken and it was delicious." },
+        { "rating": 4, "comment": "I liked this recipe, but I think it could use more seasoning." }
+      ]
+    },
+    {
+      "id": 4,
+      "name": "Taco Thursday",
+      "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/spicy-black-bean-tacos-6ac283a.jpg?quality=90&webp=true&resize=375,341",
+      "description": "An easy and delicious taco dish for a busy weekday.",
+      "ingredients": [
+        "500g ground beef",
+        "1 packet taco seasoning",
+        "Taco shells",
+        "Onions",
+        "Tomatoes",
+        "Lettuce",
+        "Shredded cheese",
+        "Sour cream",
+        "Guacamole"
+      ],
+      "instructions": [
+        "Brown the ground beef and add taco seasoning following packet instructions.",
+        "Fill taco shells with ground beef, onions, tomatoes, lettuce, cheese, sour cream, and guacamole to taste."
+      ],
+      "reviews": [
+        { "rating": 5, "comment": "This was a great recipe! I added some chicken and it was delicious." },
+        { "rating": 4, "comment": "I liked this recipe, but I think it could use more seasoning." }
+      ]
+    },
+    {
+      "id": 5,
+      "name": "Sushi Rolls",
+      "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/sushi-cdb372e.jpg?quality=90&webp=true&resize=375,341",
+      "description": "Fresh and delicious sushi rolls with fish and vegetables.",
+      "ingredients": [
+        "Nori seaweed sheets",
+        "Sushi rice",
+        "Salmon",
+        "Cucumber",
+        "Avocado",
+        "Soy sauce",
+        "Wasabi",
+        "Ginger"
+      ],
+      "instructions": [
+        "Prepare sushi rice according to package instructions and let it cool.",
+        "Place a nori seaweed sheet on a bamboo mat and spread a thin layer of rice over it.",
+        "Place salmon, cucumber, and avocado on the rice and roll it up carefully.",
+        "Slice into pieces and serve with soy sauce, wasabi, and ginger."
+      ],
+      "reviews": [
+        { "rating": 5, "comment": "This was a great recipe! I added some chicken and it was delicious." },
+        { "rating": 4, "comment": "I liked this recipe, but I think it could use more seasoning." }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Grilled Chicken Salad",
+      "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2020/08/recipe-image-legacy-id-1031452_11-e7a5417.jpg?quality=90&webp=true&resize=375,341",
+      "description": "A healthy and flavorful salad with grilled chicken and fresh vegetables.",
+      "ingredients": [
+        "2 chicken breast fillets",
+        "1 cup cherry tomatoes",
+        "1/2 cucumber",
+        "1/4 red onion",
+        "Olive oil",
+        "Balsamic vinegar",
+        "Salt and pepper to taste"
+      ],
+      "instructions": [
+        "Grill chicken breast fillets until fully cooked, then slice them into strips.",
+        "Cut cherry tomatoes in half, cucumber into slices, and thinly slice red onion.",
+        "Toss all ingredients together in a bowl and season with olive oil, balsamic vinegar, salt, and pepper."
+      ],
+      "reviews": [
+        { "rating": 5, "comment": "This was a great recipe! I added some chicken and it was delicious." },
+        { "rating": 4, "comment": "I liked this recipe, but I think it could use more seasoning." }
+      ]
+    },
+    {
+      "id": 7,
+      "name": "Vegetarian Lasagna",
+      "imageUrl": "https://images.immediate.co.uk/production/volatile/sites/30/2022/07/Broccoli-cheese-with-wholemeal-pasta-brown-breadcrumbs-7160fa8.jpg?quality=90&webp=true&resize=375,341",
+      "description": "A tasty vegetarian lasagna with succulent vegetables and cheese.",
+      "ingredients": [
+        "Lasagna noodles",
+        "1 zucchini",
+        "1 eggplant",
+        "1 bell pepper",
+        "1 onion",
+        "Tomato sauce",
+        "Shredded cheese"
+      ],
+      "instructions": [
+        "Slice vegetables thinly and sauté them until tender.",
+        "Layer lasagna noodles, vegetables, tomato sauce, and cheese in a baking dish.",
+        "Repeat layers until the dish is full.",
+        "Bake in the oven until the lasagna is golden and bubbly."
+      ],
+      "reviews": [
+        { "rating": 5, "comment": "This was a great recipe! I added some chicken and it was delicious." },
+        { "rating": 4, "comment": "I liked this recipe, but I think it could use more seasoning." }
+      ]
+    }
+  ]
+}
