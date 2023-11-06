@@ -1,0 +1,33 @@
+type Recipe {
+id: ID!
+name: String!
+description: String
+imageUrl: String
+ingredients: [String]
+instructions: [String]
+reviews: [[Int][String]]
+}
+
+type Query {
+getAllRecipes: [Recipe]
+getRecipeById(id: ID!): Recipe
+}
+
+type Mutation {
+createRecipe(
+name: String!
+description: String
+imageUrl: String
+ingredients: [String]
+instructions: [String]
+): Recipe
+updateRecipe(
+id: ID!
+name: String
+description: String
+imageUrl: String
+ingredients: [String]
+instructions: [String]
+): Recipe
+deleteRecipe(id: ID!): Boolean
+}

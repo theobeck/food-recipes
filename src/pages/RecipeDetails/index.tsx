@@ -3,21 +3,25 @@ import { useParams } from 'react-router-dom';
 import './index.css';
 import BackButton from '../../components/BackButton';
 import Review from '../../components/Review';
+import ReactStars from 'react-stars';
 
-// Define an interface "Recipe" that looks like a detailed recipe
-interface Recipe {
-  id: number;
+interface ReviewObject {
+  rating: number;
+  comment: string;
+}
+
+
+// Define the properties interface for the RecipeDetails component
+interface RecipeDetailsProps {
+  recipes: {
+    id: number;
   name: string;
   imageUrl: string;
   description: string;
   ingredients: string[];
   instructions: string[];
-  reviews: string[];
-}
-
-// Define the properties interface for the RecipeDetails component
-interface RecipeDetailsProps {
-  recipes: Recipe[];
+  reviews: ReviewObject[];
+}[];
 }
 
 // Define the RecipeDetails functional component to show a recipe with its details
@@ -50,7 +54,7 @@ function RecipeDetails(props: RecipeDetailsProps) {
     <BackButton />
     <div className="recipe-details">
       <section className='recipe-header'>
-        <img className="header-item" src={recipe.imageUrl} />
+        <img className="header-item" src={recipe.imageUrl} alt={recipe.name}/>
         <div className='header-item'>
           <h1>{recipe.name}</h1>
           <h2>Ingredients:</h2>
@@ -78,7 +82,9 @@ function RecipeDetails(props: RecipeDetailsProps) {
           <h2>Reviews</h2>
           <ul>
             {recipe.reviews.map((review, index) => (
-              <li key={index}>{review}</li>
+              <li key={index}>
+              <ReactStars count={5} value={review.rating} edit={false} /> - {review.comment}
+            </li>
             ))}
           </ul>
           </div>
