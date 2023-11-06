@@ -1,21 +1,18 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainPage from '../pages/MainPage';
 import RecipeDetails from '../pages/RecipeDetails';
+import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/graphql',
+  cache: new InMemoryCache()
+});
 
 function App() {
-  const [recipes, setRecipes] = useState([]);
-
-  useEffect(() => {
-    // Fetch recipes data from the JSON file
-    fetch('../Mockup-Data.json') // Replace with the correct path
-      .then((response) => response.json())
-      .then((data) => setRecipes(data.recipes))
-      .catch((error) => console.error('Error fetching data:', error));
-  }, []);
-
-  // Render the component structure for the app
+  const [recipes ] = useState([]);
   return (
+    <ApolloProvider client={client}>
     <Router>
       <Routes>
         <Route
@@ -25,6 +22,7 @@ function App() {
         <Route path="/" element={<MainPage recipes={recipes} itemsPerPage={4} />} />
       </Routes>
     </Router>
+    </ApolloProvider>
   );
 }
 
