@@ -12,22 +12,21 @@ const resolvers = {
         throw err;
       }
     },
-    getRecipeById: async (parent, args: { id: string }) => {
-      return Recipe.findById(args.id).then((recipe: RecipeDocument | null) => {
+    getRecipeById: async (parent, args: { id: number }) => {
+      return Recipe.findOne({
+        id: args.id,
+      }).then((recipe: RecipeDocument | null) => {
         return recipe ? { ...recipe.toObject() } : null;
       }).catch(err => {
         console.error(err);
       });
     },
     getRecipeByName: async (parent, args: { name: string }) => {
-      console.log(args);
-      console.log(Recipe);
-      const r = await Recipe.findOne({ name: args.name }).then((recipe: RecipeDocument | null) => {
+      return Recipe.findOne({ name: args.name }).then((recipe: RecipeDocument | null) => {
         return recipe ? { ...recipe.toObject() } : null;
       }).catch(err => {
         console.error(err);
       });
-      console.log(r);
     },
   },
   Mutation: {

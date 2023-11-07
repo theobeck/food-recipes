@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainPage from '../pages/MainPage';
 import RecipeDetails from '../pages/RecipeDetails';
@@ -10,16 +9,15 @@ const client = new ApolloClient({
 });
 
 function App() {
-  const [recipes ] = useState([]);
   return (
     <ApolloProvider client={client}>
     <Router>
       <Routes>
         <Route
-          path="/recipe/:id"
-          element={<RecipeDetails recipes={recipes} />}
+          path="/recipe/:name"
+          element={<RecipeDetails />}
         />
-        <Route path="/" element={<MainPage recipes={recipes} itemsPerPage={4} />} />
+        <Route path="/" element={<MainPage itemsPerPage={4} />} />
       </Routes>
     </Router>
     </ApolloProvider>
