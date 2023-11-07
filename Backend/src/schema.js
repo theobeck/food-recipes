@@ -18,7 +18,7 @@ export const typeDefs = gql`
 
   type Query {
     getAllRecipes: [Recipe]
-    getRecipeById(id: ID!): Recipe
+    getRecipeById(id: Int!): Recipe
     getRecipeByName(name: String!): Recipe
   }
 
