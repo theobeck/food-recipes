@@ -1,34 +1,36 @@
 .recipe-link {
   text-decoration: none;
   color: #333;
-  font-weight: bold;
+  letter-spacing: 1px;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  align-items: center;
+  grid-template-columns: repeat(4, minmax(300px, 1fr));
   text-align: center;
-  padding: 10px;
-  margin-bottom: 20px;
   background-color: #f0f0f0;
 }
 
 .recipe-link a {
   flex-direction: column;
-  margin: 20px;
+  margin: 30px;
   display: flex;
   align-items: center;
   overflow: hidden;
   background-color: #ffffff;
 }
 
+.recipe-link a img {
+  width: 100%;
+}
+
 .recipe-link span {
   background-color: #ffffff;
-  margin: 3vh;
+  margin: 2vh;
 }
 
 .recipe-link a:hover {
   text-decoration: none;
   color: #6c6b6b;
   box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  transform: scale(1.1, 1.1);
 }
 
 .recipe-name {

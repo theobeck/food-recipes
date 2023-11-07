@@ -1,7 +1,7 @@
 import RecipeListItem from "../../components/RecipeItem";
 import Filter from "../../components/Filter";
 import './index.css';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Option } from "react-dropdown";
 
 // Define an interface "Recipe" that is representing a recipe
@@ -31,24 +31,52 @@ function MainPage({ recipes, itemsPerPage }: MainPageProps) {
   // Show the main page
   return (
     <div className="main-page">
-      <div className="container">
-        <img id= "logo" src="src\assets\recipesLogo.png" alt="Recipes Logo" />
-        <div className= "filterAndSearch">
+      <div className="nav">
+        <img id="logo" src="src\assets\recipesLogo.png" alt="Recipes Logo" />
+      </div>
+
+      <section className="header">
+        
+        <div id="headerDiv">
+          <p>
+            What do you feel like making:
+          </p>
+
+          <div className="search">
+            <input type="text"/>
+            <button><img src="src\assets\searchIcon.png"/></button>
+            
+          </div>
+          
+
+        </div>
 
         {/*Adding a proper search bar in next iteration*/}
-        <input type="text" placeholder="Search" />
         
-        <Filter onChange={(option: Option) => console.log(option)} />
+        <img id="headerImg" src="src\assets\cooking.jpg" alt="cooking image"/>
+
+      </section>
+      <div className="container">
+
+        <div id="containerHeader">
+
+          <p>Latest and greatest</p>
+
+          {/* filtering button */}
+          <Filter onChange={(option: Option) => console.log(option)} />
+
         </div>
+
         <div className="recipe-link">
           {displayedRecipes.map((recipe) => (
             <RecipeListItem key={recipe.id} recipe={recipe} />
-          ))}
+            ))}
         </div>
         {displayedRecipes.length < recipes.length && (
           <button id = "loadMore" onClick={loadMore}>Load More</button>
         )}
       </div>
+
     </div>
   );
 }
