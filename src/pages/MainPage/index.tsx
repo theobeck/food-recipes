@@ -3,6 +3,8 @@ import Filter from "../../components/Filter";
 import './index.css';
 import { useState } from 'react';
 import { Option } from "react-dropdown";
+import { useQuery } from '@apollo/client';
+import GET_ALL_RECIPES from './queries';
 
 // Define an interface "Recipe" that is representing a recipe
 interface Recipe {
@@ -13,16 +15,30 @@ interface Recipe {
 
 // Define the properties interface for the main page
 interface MainPageProps {
-  recipes: Recipe[];
   itemsPerPage: number;
 }
 
 // Define the main page functional component that displays the recipes
-function MainPage({ recipes, itemsPerPage }: MainPageProps) {
+function MainPage({ itemsPerPage }: MainPageProps) {
   const [currentPage, setCurrentPage] = useState(1);
 
   // function to load more recipes
   const loadMore = () => setCurrentPage(currentPage + 1);
+
+  const { loading, error, data } = useQuery(GET_ALL_RECIPES, {
+    // Use for filters and pagination
+    variables: { offset: 0, limit: currentPage * itemsPerPage },
+
+  });
+
+  //TODO: FETCH MORE
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const recipes = data?.getAllRecipes || [];
+
+
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
@@ -68,7 +84,7 @@ function MainPage({ recipes, itemsPerPage }: MainPageProps) {
         </div>
 
         <div className="recipe-link">
-          {displayedRecipes.map((recipe) => (
+          {displayedRecipes.map((recipe: Recipe) => (
             <RecipeListItem key={recipe.id} recipe={recipe} />
             ))}
         </div>
