@@ -53,21 +53,6 @@ function MainPage({ itemsPerPage }: MainPageProps) {
     recipe.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
-  const { loading, error, data } = useQuery(GET_ALL_RECIPES, {
-    // Use for filters and pagination
-    variables: { offset: 0, limit: currentPage * itemsPerPage },
-
-  });
-
-  //TODO: FETCH MORE
-
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>Error: {error.message}</p>;
-
-  const recipes = data?.getAllRecipes || [];
-
-
-
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedRecipes = filteredRecipes.slice(0, endIndex);
