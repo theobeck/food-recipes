@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import './index.css';
 import BackButton from '../../components/BackButton';
