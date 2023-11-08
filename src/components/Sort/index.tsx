@@ -1,6 +1,5 @@
 import Dropdown, { Option } from 'react-dropdown';
 import 'react-dropdown/style.css';
-import React from 'react';
 
 // Defines the properties interface for the Sort component
 interface SortProps {

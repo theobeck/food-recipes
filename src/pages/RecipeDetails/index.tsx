@@ -5,6 +5,7 @@ import Review from '../../components/Review';
 import ReactStars from 'react-stars';
 import { useQuery } from '@apollo/client';
 import GET_RECIPE from './queries';
+import logo from '../../assets/recipesLogo.png';
 
 type Review = {
   rating: number;
@@ -32,8 +33,8 @@ function RecipeDetails() {
     <div className="recipe-details">
       <section className="nav">
         <BackButton />
-        <a href="/">
-          <img id="logo" src="/src/assets/recipesLogo.png" alt="Recipes Logo" />
+        <a href={import.meta.env.BASE_URL}>
+          <img id="logo" src={logo} alt="Recipes Logo" />
         </a>
         <a id="aboutUs" target="_blank" href="https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D">
           {' '}
