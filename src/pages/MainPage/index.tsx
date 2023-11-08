@@ -1,8 +1,9 @@
-import RecipeListItem from "../../components/RecipeItem";
-import Filter from "../../components/Filter";
+import RecipeListItem from '../../components/RecipeItem';
+import Filter from '../../components/Filter';
+import SearchBar from '../../components/SearchBar';
 import './index.css';
 import { useState } from 'react';
-import { Option } from "react-dropdown";
+import { Option } from 'react-dropdown';
 import { useQuery } from '@apollo/client';
 import GET_ALL_RECIPES from './queries';
 
@@ -21,9 +22,30 @@ interface MainPageProps {
 // Define the main page functional component that displays the recipes
 function MainPage({ itemsPerPage }: MainPageProps) {
   const [currentPage, setCurrentPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState('');
 
   // function to load more recipes
-  const loadMore = () => setCurrentPage(currentPage + 1);
+  const loadMore = () => setCurrentPage((currentPage) => currentPage + 1);
+
+  const { loading, error, data } = useQuery(GET_ALL_RECIPES, {
+    // Use for filters and pagination
+    variables: { offset: 0, limit: currentPage * itemsPerPage },
+  });
+
+  const handleSearch = (searchTerm: string) => {
+    setSearchTerm(searchTerm);
+  };
+
+  //TODO: FETCH MORE
+
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+
+  const recipes = data?.getAllRecipes || [];
+
+  const filteredRecipes = recipes.filter((recipe: Recipe) =>
+    recipe.name.toLowerCase().includes(searchTerm.toLowerCase()),
+  );
 
   const { loading, error, data } = useQuery(GET_ALL_RECIPES, {
     // Use for filters and pagination
@@ -42,7 +64,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
-  const displayedRecipes = recipes.slice(0, endIndex);
+  const displayedRecipes = filteredRecipes.slice(0, endIndex);
 
   // Show the main page
   return (
@@ -52,35 +74,25 @@ function MainPage({ itemsPerPage }: MainPageProps) {
       </div>
 
       <section className="header">
-        
         <div id="headerDiv">
-          <p>
-            What do you feel like making:
-          </p>
+          <p>What do you feel like making:</p>
 
           <div className="search">
-            <input type="text"/>
-            <button><img src="src\assets\searchIcon.png"/></button>
-            
+            <SearchBar onChange={handleSearch} />
+            <button>
+              <img src="src\assets\searchIcon.png" />
+            </button>
           </div>
-          
-
         </div>
 
-        {/*Adding a proper search bar in next iteration*/}
-        
-        <img id="headerImg" src="src\assets\cooking.jpg" alt="cooking image"/>
-
+        <img id="headerImg" src="src\assets\cooking.jpg" alt="cooking image" />
       </section>
       <div className="container">
-
         <div id="containerHeader">
-
           <p>Latest and greatest</p>
 
           {/* filtering button */}
           <Filter onChange={(option: Option) => console.log(option)} />
-
         </div>
 
         <div className="recipe-link">
@@ -88,8 +100,10 @@ function MainPage({ itemsPerPage }: MainPageProps) {
             <RecipeListItem key={recipe.id} recipe={recipe} />
             ))}
         </div>
-        {displayedRecipes.length < recipes.length && (
-          <button id = "loadMore" onClick={loadMore}>Load More</button>
+        {displayedRecipes.length < filteredRecipes.length && (
+          <button id="loadMore" onClick={loadMore}>
+            Load More
+          </button>
         )}
       </div>
 
