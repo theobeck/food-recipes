@@ -15,11 +15,11 @@ export default function Rating() {
 
     
     const ratingChanged = (newRating: React.SetStateAction<number>) => {
-        setRating(newRating); // Update the rating state when it changes
+        setRating(newRating);
     }
 
     const handleCommentChange = (event: { target: { value: React.SetStateAction<string>; }; }) => {
-        setComment(event.target.value); // Update the comment state when the input changes
+        setComment(event.target.value);
     }
 
     const handleSubmit = async () => {
@@ -45,19 +45,22 @@ export default function Rating() {
         <div className="rating">
             <ReactStars
                 count={5}
-                size={24}
+                size={34}
                 color2={'#ffd700'}
-                onChange={ratingChanged} // Pass the ratingChanged function as an onChange handler
-                value={rating} // Pass the rating state as the value to display the selected rating
+                onChange={ratingChanged}
+                value={rating}
             />
-            <input
-                id="comment"
-                type="text"
-                placeholder="Add a review"
-                value={comment} // Pass the comment state as the input value
-                onChange={handleCommentChange} // Pass the handleCommentChange function as an onChange handler
-            />
-            <button onClick={handleSubmit}>Submit</button>
+
+            <div className='input'>
+                <input
+                    id="comment"
+                    type="text"
+                    placeholder="Add a review"
+                    value={comment}
+                    onChange={handleCommentChange}
+                />
+                <button onClick={handleSubmit}>Submit</button>
+            </div>
         </div>
     );
 }

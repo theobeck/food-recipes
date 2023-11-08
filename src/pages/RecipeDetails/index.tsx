@@ -1,4 +1,3 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import './index.css';
 import BackButton from '../../components/BackButton';
@@ -35,12 +34,31 @@ function RecipeDetails() {
   // Show the details of the recipe selected
   return (
     <>
-      <BackButton />
       <div className="recipe-details">
+        <section className="nav">
+        <BackButton />
+          <a href="/">
+            <img id="logo" src='/src/assets/recipesLogo.png' alt="Recipes Logo" />
+          </a>
+          <a id='aboutUs' target='_blank' href='https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D'> About us</a>
+        </section>
+
+
+        
         <section className='recipe-header'>
           <img className="header-item" src={recipe.imageUrl} alt={recipe.name} />
+
           <div className='header-item'>
             <h1>{recipe.name}</h1>
+            <p>{recipe.description}</p>
+          </div>
+        </section>
+
+        <section className='recipe-body'>
+
+      
+
+          <div id='ingredients'>
             <h2>Ingredients:</h2>
             <ul>
               {recipe.ingredients.map((ingredient: string, index: number) => (
@@ -48,28 +66,38 @@ function RecipeDetails() {
               ))}
             </ul>
           </div>
-        </section>
 
-        <section className='recipe-body'>
-          <p>{recipe.description}</p>
-          <h2>Instructions:</h2>
-          <ul className='instructions'>
-            {recipe.instructions.map((instructions: string, index:number) => (
-              <li key={index}>{instructions}</li>
-            ))}
-          </ul>
-          <div className="review">
-            <Review />
-            <h2>Reviews</h2>
-            <ul>
-              {recipe.reviews.map((review: Review, index:number) => (
-                <li key={index}>
-                  <ReactStars count={5} value={review.rating} edit={false} /> - {review.comment}
-                </li>
+          <div id='instructions'>
+            <h2>Instructions:</h2>
+            <ul className='instructionsList'>
+              {recipe.instructions.map((instructions: string, index:number) => (
+                <li key={index}>{instructions}</li>
               ))}
             </ul>
           </div>
+          
+          
         </section>
+        
+        <section className="review">
+
+          <div id='rating'>
+            <h2>Leave a rating!</h2>
+            
+            <div className="reviews">
+              <Review />
+              <h3>Reviews</h3>
+              <ul>
+                {recipe.reviews.map((review: Review, index:number) => (
+                  <li key={index}>
+                    <ReactStars value={review.rating} edit={false} /> - {review.comment}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </section>
+
       </div>
     </>
   );

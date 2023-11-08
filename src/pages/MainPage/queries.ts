@@ -6,6 +6,10 @@ const GET_ALL_RECIPES = gql`
             id
             name
             imageUrl
+            reviews {
+                rating
+                comment 
+            }
         }
     }
     `;
