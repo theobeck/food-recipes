@@ -36,3 +36,25 @@
 .recipe-name {
   font-size: 18px;
 }
+
+.ratingStars {
+  padding-bottom: 2vh;
+}
+
+@media screen and (max-width: 1224px) {
+  .recipe-link {
+    grid-template-columns: repeat(3, minmax(300px, 1fr));
+  }
+}
+
+@media screen and (max-width: 968px) {
+  .recipe-link {
+    grid-template-columns: repeat(2, minmax(300px, 1fr));
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .recipe-link {
+    grid-template-columns: repeat(1, minmax(300px, 1fr));
+  }
+}

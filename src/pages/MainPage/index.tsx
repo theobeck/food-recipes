@@ -31,7 +31,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   const [searchTerm, setSearchTerm] = useState('');
 
   // function to load more recipes
-  const loadMore = () => setCurrentPage((currentPage) => currentPage + 1);
+  const loadMore = () => setCurrentPage((currentPage) => currentPage + 2);
 
   const { loading, error, data } = useQuery(GET_ALL_RECIPES, {
     // Use for filters and pagination
@@ -60,9 +60,12 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   // Show the main page
   return (
     <div className="main-page">
-      <div className="nav">
-        <img id="logo" src="src\assets\recipesLogo.png" alt="Recipes Logo" />
-      </div>
+      <section className="nav">
+          <a href="/">
+            <img id="logo" src='/src/assets/recipesLogo.png' alt="Recipes Logo" />
+          </a>
+          <a id='aboutUs' target='_blank' href='https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D'> About us</a>
+        </section>
 
       <section className="header">
         <div id="headerDiv">
@@ -74,17 +77,20 @@ function MainPage({ itemsPerPage }: MainPageProps) {
               <img src="src\assets\searchIcon.png" />
             </button>
           </div>
+          
         </div>
 
         <img id="headerImg" src="src\assets\cooking.jpg" alt="cooking image" />
       </section>
+
       <div className="container">
+
         <div id="containerHeader">
           <p>Latest and greatest</p>
-
-          {/* filtering button */}
           <Filter onChange={(option: Option) => console.log(option)} />
+        
         </div>
+
 
         <div className="recipe-link">
           {displayedRecipes.map((recipe: Recipe) => (
