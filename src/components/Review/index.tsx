@@ -28,14 +28,14 @@ export default function Rating() {
         try {
             const result = await addReview({
                 variables: {
-                    addReviewId: id,
-                    review: {
-                        rating: rating,
-                        comment: comment
-                    }
+                    id: id,
+                    rating: rating,
+                    comment: comment
                 }
             });
             console.log('Review uploaded successfully!', result.data.addReview);
+            //refresh page
+            window.location.reload();
         } catch (error) {
             console.error('Error uploading', error);
         }

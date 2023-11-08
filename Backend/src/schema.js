@@ -26,7 +26,7 @@ export const typeDefs = gql`
     addRecipe(input: RecipeInput!): Recipe
     updateRecipe(id: ID!, input: RecipeInput!): Recipe
     deleteRecipe(id: ID!): Recipe
-    addReview(id: Int!, rating: Int!, review: ReviewInput!): Recipe
+    addReview(id: Int!, rating: Int!, comment: String!): Recipe
   }
 
   input RecipeInput {
