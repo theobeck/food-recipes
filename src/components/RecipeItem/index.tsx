@@ -1,7 +1,7 @@
 // RecipeListItem.tsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import './index.css'; 
+import './index.css';
 
 // Defines an interface "Recipe" with information to represent a recipe'
 interface Reviews {
@@ -12,7 +12,7 @@ interface Recipe {
   id: number;
   name: string;
   imageUrl: string;
-  reviews: [Reviews];
+  reviews: Reviews[];
 }
 
 // Defines the properties interface for the Filter component
