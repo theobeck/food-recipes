@@ -1,24 +1,24 @@
 import RecipeListItem from "../../components/RecipeItem";
 import Filter from "../../components/Filter";
 import './index.css';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { Option } from "react-dropdown";
 import { useQuery } from '@apollo/client';
 import GET_ALL_RECIPES from './queries';
 
-// Define an interface "Recipe" that is representing a recipe
+// Defines an interface "Recipe" that is representing a recipe
 interface Recipe {
   id: number;
   name: string;
   imageUrl: string;
 }
 
-// Define the properties interface for the main page
+// Defines the properties interface for the main page
 interface MainPageProps {
   itemsPerPage: number;
 }
 
-// Define the main page functional component that displays the recipes
+// Defines the main page functional component that displays the recipes
 function MainPage({ itemsPerPage }: MainPageProps) {
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -47,52 +47,24 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   // Show the main page
   return (
     <div className="main-page">
-      <div className="nav">
-        <img id="logo" src="src\assets\recipesLogo.png" alt="Recipes Logo" />
-      </div>
-
-      <section className="header">
-        
-        <div id="headerDiv">
-          <p>
-            What do you feel like making:
-          </p>
-
-          <div className="search">
-            <input type="text"/>
-            <button><img src="src\assets\searchIcon.png"/></button>
-            
-          </div>
-          
-
-        </div>
+      <div className="container">
+        <img id= "logo" src="src\assets\recipesLogo.png" alt="Recipes Logo" />
+        <div className= "filterAndSearch">
 
         {/*Adding a proper search bar in next iteration*/}
+        <input type="text" placeholder="Search" />
         
-        <img id="headerImg" src="src\assets\cooking.jpg" alt="cooking image"/>
-
-      </section>
-      <div className="container">
-
-        <div id="containerHeader">
-
-          <p>Latest and greatest</p>
-
-          {/* filtering button */}
-          <Filter onChange={(option: Option) => console.log(option)} />
-
+        <Filter onChange={(option: Option) => console.log(option)} />
         </div>
-
         <div className="recipe-link">
           {displayedRecipes.map((recipe: Recipe) => (
             <RecipeListItem key={recipe.id} recipe={recipe} />
-            ))}
+          ))}
         </div>
         {displayedRecipes.length < recipes.length && (
           <button id = "loadMore" onClick={loadMore}>Load More</button>
         )}
       </div>
-
     </div>
   );
 }

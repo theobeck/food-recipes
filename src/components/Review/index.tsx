@@ -1,10 +1,19 @@
 import React, { useState } from 'react';
 import ReactStars from 'react-stars';
+import { useParams } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
+import { ADD_REVIEW } from './queries'; 
 
 export default function Rating() {
     const [rating, setRating] = useState(0); // Initialize rating as a state
     const [comment, setComment] = useState(''); // Initialize comment as a state
+    const { name } = useParams(); // Get the recipe ID from the URL
+    const [ addReview ] = useMutation(ADD_REVIEW); 
+    
+    // Convert 'name' to an integer
+    const id = parseInt(name || "", 10);
 
+    
     const ratingChanged = (newRating: React.SetStateAction<number>) => {
         setRating(newRating); // Update the rating state when it changes
     }
@@ -13,10 +22,21 @@ export default function Rating() {
         setComment(event.target.value); // Update the comment state when the input changes
     }
 
-    const handleSubmit = () => {
-        console.log("Rating: " + rating);
-        console.log("Comment: " + comment);
+    const handleSubmit = async () => {
+        console.log("Trying to Upload -> Rating: " + rating + " Comment: " + comment + " to ID: " + name);
         // Here, you can perform any actions with the rating and comment values
+        try {
+            const result = await addReview({
+                variables: {
+                    id: id,
+                    rating: rating,
+                    comment: comment
+                }
+            });
+            console.log('Review uploaded successfully!', result.data.addReview);
+        } catch (error) {
+            console.log('Error uploading', error);
+        }
     }
 
     return (

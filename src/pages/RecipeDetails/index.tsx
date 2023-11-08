@@ -19,14 +19,10 @@ function RecipeDetails() {
   const id = parseInt(name || '0');
   
 
-  console.log(id);
-
     // Apollo Client to fetch the recipe data
     const { loading, error, data } = useQuery(GET_RECIPE, {
       variables: { id: id },
     });
-
-    console.log(data);
 
   
   if (loading) return <p>Loading...</p>;
@@ -35,7 +31,6 @@ function RecipeDetails() {
   
 
   const recipe = data?.getRecipeById; 
-  console.log(recipe);
 
   // Show the details of the recipe selected
   return (
