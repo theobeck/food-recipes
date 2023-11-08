@@ -1,3 +1,5 @@
+// RecipeListItem.tsx
+import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.css'; 
 
@@ -13,12 +15,12 @@ interface Recipe {
   reviews: [Reviews];
 }
 
-// Define the properties interface for the Filter component
+// Defines the properties interface for the Filter component
 interface RecipeListItemProps {
   recipe: Recipe;
 }
 
-// Define the RecipeListItem component as a functional component
+// Defines the RecipeListItem component as a functional component
 export default function RecipeListItem(props: RecipeListItemProps) {
   const { id, name, imageUrl, reviews } = props.recipe;
 
@@ -32,7 +34,7 @@ export default function RecipeListItem(props: RecipeListItemProps) {
     return sum / reviews.length;
   };
 
-  // Show the div element with the recipe information
+  // Shows the div element with the recipe information
   return (
     <div key={id}>
       <Link to={`/recipe/${id}`} className="recipe-link">

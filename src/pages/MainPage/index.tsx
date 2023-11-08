@@ -20,12 +20,12 @@ interface Recipe {
   reviews: [Reviews];
 }
 
-// Define the properties interface for the main page
+// Defines the properties interface for the main page
 interface MainPageProps {
   itemsPerPage: number;
 }
 
-// Define the main page functional component that displays the recipes
+// Defines the main page functional component that displays the recipes
 function MainPage({ itemsPerPage }: MainPageProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
@@ -95,7 +95,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
         <div className="recipe-link">
           {displayedRecipes.map((recipe: Recipe) => (
             <RecipeListItem key={recipe.id} recipe={recipe} />
-            ))}
+          ))}
         </div>
         {displayedRecipes.length < filteredRecipes.length && (
           <button id="loadMore" onClick={loadMore}>
@@ -103,7 +103,6 @@ function MainPage({ itemsPerPage }: MainPageProps) {
           </button>
         )}
       </div>
-
     </div>
   );
 }

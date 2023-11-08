@@ -1,4 +1,4 @@
-import Recipe, { RecipeDocument } from '../src/model.js';
+import Recipe, { RecipeDocument, Review } from '../src/model.js';
 
 
 const resolvers = {
@@ -55,6 +55,29 @@ const resolvers = {
       }).catch(err => {
         console.error(err);
       });
+    },
+    addReview: async (parent, args: {
+      
+      id: number;
+      rating: number;
+      comment: string;
+
+    }): Promise<RecipeDocument | null> => {
+      const { id, rating, comment } = args;
+      try {
+        const recipe = await Recipe.findOne({ id: id });
+        if (!recipe) {
+          throw new Error(`Recipe with ID ${id} not found`);
+        }
+        // Create a new review and add it to the recipe's reviews array
+        const newReview: Review = { rating, comment };
+        recipe.reviews.push(newReview);
+        const result = await recipe.save();
+        return { ...result.toObject() };
+      } catch (err) {
+        console.error(err);
+        throw err;
+      }
     },
   },
 };
