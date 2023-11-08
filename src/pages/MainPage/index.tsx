@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { Option } from 'react-dropdown';
 import { useQuery } from '@apollo/client';
 import GET_ALL_RECIPES from './queries';
+import { GET_VEGETARIAN_RECIPES } from './queries';
 
 // Define an interface "Recipe" that is representing a recipe
 interface Reviews {
@@ -30,14 +31,25 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedSort, setSelectedSort] = useState('');
+  const [vegetarian, setVegetarian] = useState(false);
 
   // function to load more recipes
   const loadMore = () => setCurrentPage((currentPage) => currentPage + 2);
 
-  const { loading, error, data } = useQuery(GET_ALL_RECIPES, {
+  const allResult = useQuery(GET_ALL_RECIPES, {
+      // Use for filters and pagination
+      variables: { offset: 0, limit: currentPage * itemsPerPage },
+    });
+  
+  const vegetarianResult = useQuery(GET_VEGETARIAN_RECIPES, {
     // Use for filters and pagination
     variables: { offset: 0, limit: currentPage * itemsPerPage },
   });
+  
+
+  const loading = vegetarian ? vegetarianResult.loading : allResult.loading;
+  const error = vegetarian ? vegetarianResult.error : allResult.error;
+  const data = vegetarian ? vegetarianResult.data : allResult.data;
 
   //TODO: FETCH MORE
 
@@ -71,7 +83,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   };
 
   // Get all the recipes from the database
-  const recipes = data?.getAllRecipes || [];
+  const recipes = (vegetarian ? data?.getAllVegetarianRecipes : data?.getAllRecipes) || [];
 
   // Sort the recipes based on the selected sort option
   let sortedRecipes = [...recipes];
@@ -122,7 +134,10 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
         <div id="containerHeader">
           <p>Latest and greatest</p>
-
+          <div className="filter">
+            <label htmlFor="vegetarian">Vegetarian</label>
+            <input type="checkbox" id="vegetarian" name="vegetarian" checked={vegetarian} onChange={() => setVegetarian((prev) => !prev)} />
+          </div>
           {/* button for sorting */}
           <Sort onChange={(option: Option) => setSelectedSort(option.value)} />
         </div>

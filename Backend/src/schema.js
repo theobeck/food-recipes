@@ -14,10 +14,12 @@ export const typeDefs = gql`
     ingredients: [String]
     instructions: [String]
     reviews: [Review]
+    vegetarian: Boolean
   }
 
   type Query {
     getAllRecipes: [Recipe]
+    getAllVegetarianRecipes: [Recipe]
     getRecipeById(id: Int!): Recipe
     getRecipeByName(name: String!): Recipe
   }

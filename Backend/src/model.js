@@ -26,6 +26,10 @@ const recipesSchema = new Schema({
     type: [String],
     required: true,
   },
+  vegetarian: {
+    type: Boolean,
+    required: false,
+  },
   reviews: [
     // Subdocument schema for reviews
     new Schema({
