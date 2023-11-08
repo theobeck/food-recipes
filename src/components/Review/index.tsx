@@ -46,6 +46,7 @@ export default function Rating() {
             <ReactStars
                 count={5}
                 size={34}
+                half={false}
                 color2={'#ffd700'}
                 onChange={ratingChanged}
                 value={rating}
