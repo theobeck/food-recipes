@@ -74,17 +74,20 @@ function MainPage({ itemsPerPage }: MainPageProps) {
               <img src="src\assets\searchIcon.png" />
             </button>
           </div>
+          
         </div>
 
         <img id="headerImg" src="src\assets\cooking.jpg" alt="cooking image" />
       </section>
+
       <div className="container">
+
         <div id="containerHeader">
           <p>Latest and greatest</p>
-
-          {/* filtering button */}
           <Filter onChange={(option: Option) => console.log(option)} />
+        
         </div>
+
 
         <div className="recipe-link">
           {displayedRecipes.map((recipe: Recipe) => (

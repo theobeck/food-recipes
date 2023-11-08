@@ -60,10 +60,28 @@ body {
   background-color: #4f4c4c;
 }
 
+.Dropdown-control {
+  background-color: #d2b9aa;
+  border-radius: 1vh;
+  padding: 10px 15px;
+  border: none;
+  width: 30vh;
+}
+
+.Dropdown-menu {
+  background-color: #eedfd6;
+  border: none;
+  width: 30vh;
+}
+
+.Dropdown-control:hover {
+  background-color: #bfa695;
+}
+
 .recipe-link {
   text-decoration: none;
   font-weight: bold;
-  margin: 0% 14%;
+  margin: 0vh 2vh;
 }
 
 .container {
@@ -72,13 +90,14 @@ body {
 }
 
 #containerHeader p {
-  margin-left: 10%;
   font-size: 20pt;
 }
 
 .container #containerHeader {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 10vh;
 }
 
 #loadMore {
