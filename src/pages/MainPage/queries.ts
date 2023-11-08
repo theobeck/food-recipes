@@ -12,5 +12,19 @@ const GET_ALL_RECIPES = gql`
             }
         }
     }
-    `;
-    export default GET_ALL_RECIPES;
+`;
+const GET_VEGETARIAN_RECIPES = gql`
+    query getAllVegetarianRecipes {
+        getAllVegetarianRecipes {
+            id
+            name
+            imageUrl
+            reviews {
+                rating
+                comment 
+            }
+        }
+    }
+`;
+export { GET_VEGETARIAN_RECIPES };
+export default GET_ALL_RECIPES;

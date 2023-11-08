@@ -28,6 +28,13 @@ const resolvers = {
         console.error(err);
       });
     },
+    getAllVegetarianRecipes: async () => {
+      return Recipe.find({ vegetarian: true}).then((recipes: RecipeDocument[]) => {
+        return recipes.map((recipe: RecipeDocument) => ({ ...recipe.toObject() }));
+      }).catch(err => {
+        console.error(err);
+      });
+    }
   },
   Mutation: {
     addRecipe: (parent, args: {
