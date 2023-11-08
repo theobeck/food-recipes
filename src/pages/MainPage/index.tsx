@@ -64,8 +64,6 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
           <div className="search">
             <SearchBar onChange={handleSearch} />
-            {/* onChange={(searchTerm: string) => console.log(searchTerm)} */}
-            {/* <input type="text" /> */}
             <button>
               <img src="src\assets\searchIcon.png" />
             </button>
