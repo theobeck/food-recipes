@@ -38,7 +38,7 @@ export default function RecipeListItem(props: RecipeListItemProps) {
       <Link to={`/recipe/${id}`} className="recipe-link">
         <img src={imageUrl} alt={name} />
         <span className="recipe-name">{name}</span>
-        <div className="rating">
+        <div className="ratingStars">
           <span className="rating-number">{AverageRating()}</span>
           <span className="rating-star">★</span>
         </div>

@@ -36,3 +36,7 @@
 .recipe-name {
   font-size: 18px;
 }
+
+.ratingStars {
+  padding-bottom: 2vh;
+}
