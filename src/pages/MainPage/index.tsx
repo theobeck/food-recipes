@@ -8,10 +8,16 @@ import { useQuery } from '@apollo/client';
 import GET_ALL_RECIPES from './queries';
 
 // Define an interface "Recipe" that is representing a recipe
+interface Reviews {
+  rating: number;
+  comment: string;
+}
+
 interface Recipe {
   id: number;
   name: string;
   imageUrl: string;
+  reviews: [Reviews];
 }
 
 // Define the properties interface for the main page
