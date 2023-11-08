@@ -37,7 +37,7 @@ body {
   margin: 7%;
 }
 
-.header input[type='text'] {
+/* .header input[type='text'] {
   width: 77%;
   padding: 10px;
   background-color: rgba(0, 0, 0, 0);
@@ -50,7 +50,7 @@ body {
 
 .header input[type='text']:focus {
   outline: none;
-}
+} */
 
 .header div img {
   max-width: 3vh;
