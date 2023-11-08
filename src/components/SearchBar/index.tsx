@@ -19,4 +19,6 @@ export default function SearchBar(props: SearchBarProps) {
 
   // Show the SearchBar component
   return <input className="search-bar" type="text" placeholder="Search" value={searchTerm} onChange={handleSearch} />;
+  
 }
+

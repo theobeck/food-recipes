@@ -31,7 +31,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   const [searchTerm, setSearchTerm] = useState('');
 
   // function to load more recipes
-  const loadMore = () => setCurrentPage((currentPage) => currentPage + 1);
+  const loadMore = () => setCurrentPage((currentPage) => currentPage + 2);
 
   const { loading, error, data } = useQuery(GET_ALL_RECIPES, {
     // Use for filters and pagination
