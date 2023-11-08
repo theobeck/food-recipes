@@ -18,34 +18,5 @@ export default function SearchBar(props: SearchBarProps) {
   };
 
   // Show the SearchBar component
-  return <input className="searchBar" type="text" placeholder="Search" value={searchTerm} onChange={handleSearch} />;
+  return <input className="search-bar" type="text" placeholder="Search" value={searchTerm} onChange={handleSearch} />;
 }
-
-// import React from 'react';
-// import RecipeItem from '../RecipeItem';
-// import { Recipe } from '../../types';
-
-// // Define the properties interface for the RecipeList component
-// interface RecipeListProps {
-//     recipes: Recipe[];
-//     searchTerm: string;
-// }
-
-// // Define the RecipeList functional component
-// export default function RecipeList(props: RecipeListProps) {
-//     const { recipes, searchTerm } = props;
-
-//     // Filter the recipes based on the search term
-//     const filteredRecipes = recipes.filter((recipe) =>
-//         recipe.name.toLowerCase().includes(searchTerm.toLowerCase())
-//     );
-
-//     // Show the RecipeList component
-//     return (
-//         <div className="recipeList">
-//             {filteredRecipes.map((recipe) => (
-//                 <RecipeItem key={recipe.id} recipe={recipe} />
-//             ))}
-//         </div>
-//     );
-// }
