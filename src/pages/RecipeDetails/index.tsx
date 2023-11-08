@@ -12,94 +12,82 @@ type Review = {
 };
 
 function RecipeDetails() {
-// Import GraphQL query for fetching a single recipe
+  // Import GraphQL query for fetching a single recipe
   const { name } = useParams<{ name: string | undefined }>();
 
   const id = parseInt(name || '0');
-  
 
-    // Apollo Client to fetch the recipe data
-    const { loading, error, data } = useQuery(GET_RECIPE, {
-      variables: { id: id },
-    });
+  // Apollo Client to fetch the recipe data
+  const { loading, error, data } = useQuery(GET_RECIPE, {
+    variables: { id: id },
+  });
 
-  
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  
-
-  const recipe = data?.getRecipeById; 
+  const recipe = data?.getRecipeById;
 
   // Show the details of the recipe selected
   return (
-    <>
-      <div className="recipe-details">
-        <section className="nav">
+    <div className="recipe-details">
+      <section className="nav">
         <BackButton />
-          <a href="/">
-            <img id="logo" src='/src/assets/recipesLogo.png' alt="Recipes Logo" />
-          </a>
-          <a id='aboutUs' target='_blank' href='https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D'> About us</a>
-        </section>
+        <a href="/">
+          <img id="logo" src="/src/assets/recipesLogo.png" alt="Recipes Logo" />
+        </a>
+        <a id="aboutUs" target="_blank" href="https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D">
+          {' '}
+          About us
+        </a>
+      </section>
 
+      <section className="recipe-header">
+        <img className="header-item" src={recipe.imageUrl} alt={recipe.name} />
 
-        
-        <section className='recipe-header'>
-          <img className="header-item" src={recipe.imageUrl} alt={recipe.name} />
+        <div className="header-item">
+          <h1>{recipe.name}</h1>
+          <p>{recipe.description}</p>
+        </div>
+      </section>
 
-          <div className='header-item'>
-            <h1>{recipe.name}</h1>
-            <p>{recipe.description}</p>
-          </div>
-        </section>
+      <section className="recipe-body">
+        <div id="ingredients">
+          <h2>Ingredients:</h2>
+          <ul>
+            {recipe.ingredients.map((ingredient: string, index: number) => (
+              <li key={index}>{ingredient}</li>
+            ))}
+          </ul>
+        </div>
 
-        <section className='recipe-body'>
+        <div id="instructions">
+          <h2>Instructions:</h2>
+          <ul className="instructionsList">
+            {recipe.instructions.map((instructions: string, index: number) => (
+              <li key={index}>{instructions}</li>
+            ))}
+          </ul>
+        </div>
+      </section>
 
-      
+      <section className="review">
+        <div id="rating">
+          <h2>Leave a rating!</h2>
 
-          <div id='ingredients'>
-            <h2>Ingredients:</h2>
+          <div className="reviews">
+            <Review />
+            <h3>Reviews</h3>
             <ul>
-              {recipe.ingredients.map((ingredient: string, index: number) => (
-                <li key={index}>{ingredient}</li>
+              {recipe.reviews.map((review: Review, index: number) => (
+                <li key={index}>
+                  <ReactStars value={review.rating} edit={false} /> - {review.comment}
+                </li>
               ))}
             </ul>
           </div>
-
-          <div id='instructions'>
-            <h2>Instructions:</h2>
-            <ul className='instructionsList'>
-              {recipe.instructions.map((instructions: string, index:number) => (
-                <li key={index}>{instructions}</li>
-              ))}
-            </ul>
-          </div>
-          
-          
-        </section>
-        
-        <section className="review">
-
-          <div id='rating'>
-            <h2>Leave a rating!</h2>
-            
-            <div className="reviews">
-              <Review />
-              <h3>Reviews</h3>
-              <ul>
-                {recipe.reviews.map((review: Review, index:number) => (
-                  <li key={index}>
-                    <ReactStars value={review.rating} edit={false} /> - {review.comment}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-        </section>
-
-      </div>
-    </>
+        </div>
+      </section>
+    </div>
   );
 }
 
