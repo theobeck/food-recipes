@@ -31,7 +31,8 @@ export default function RecipeListItem(props: RecipeListItemProps) {
     reviews.forEach((review) => {
       sum += review.rating;
     });
-    return sum / reviews.length;
+    const average = sum / reviews.length;
+    return average.toFixed(1);
   };
 
   // Shows the div element with the recipe information
