@@ -1,5 +1,5 @@
 import RecipeListItem from '../../components/RecipeItem';
-import Filter from '../../components/Filter';
+import Sort from '../../components/Sort';
 import SearchBar from '../../components/SearchBar';
 import './index.css';
 import { useState } from 'react';
@@ -17,7 +17,7 @@ interface Recipe {
   id: number;
   name: string;
   imageUrl: string;
-  reviews: [Reviews];
+  reviews: Reviews[];
 }
 
 // Defines the properties interface for the main page
@@ -29,6 +29,7 @@ interface MainPageProps {
 function MainPage({ itemsPerPage }: MainPageProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
+  const [selectedSort, setSelectedSort] = useState('');
 
   // function to load more recipes
   const loadMore = () => setCurrentPage((currentPage) => currentPage + 2);
@@ -38,24 +39,58 @@ function MainPage({ itemsPerPage }: MainPageProps) {
     variables: { offset: 0, limit: currentPage * itemsPerPage },
   });
 
-  const handleSearch = (searchTerm: string) => {
-    setSearchTerm(searchTerm);
-  };
-
   //TODO: FETCH MORE
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
+  const averageRating = (reviews: Reviews[]): number => {
+    let sum = 0;
+    if (reviews.length === 0) return 0;
+    reviews.forEach((review) => {
+      sum += review.rating;
+    });
+    return sum / reviews.length;
+  };
+
+  // function to sort recipes by highest rating
+  const sortRecipesByHighestRating = (recipes: Recipe[]) => {
+    recipes.sort((a, b) => {
+      // Find the highest rating for each recipe
+      const highestRatingA = averageRating(a.reviews);
+      const highestRatingB = averageRating(b.reviews);
+      // Compare the highest ratings
+      return highestRatingB - highestRatingA;
+    });
+    return recipes;
+  };
+
+  // function to sort recipes by alphabetical order
+  const sortRecipesByAlphabeticalOrder = (recipes: Recipe[]) => {
+    return recipes.sort((a, b) => a.name.localeCompare(b.name));
+  };
+
+  // Get all the recipes from the database
   const recipes = data?.getAllRecipes || [];
 
-  const filteredRecipes = recipes.filter((recipe: Recipe) =>
+  // Sort the recipes based on the selected sort option
+  let sortedRecipes = [...recipes];
+  if (selectedSort === 'highest-rating') {
+    sortedRecipes = sortRecipesByHighestRating(sortedRecipes);
+  } else if (selectedSort === 'alphabetical-order') {
+    sortedRecipes = sortRecipesByAlphabeticalOrder(sortedRecipes);
+  }
+
+  // Filter the recipes based on the search term
+  const filteredRecipes = sortedRecipes.filter((recipe: Recipe) =>
     recipe.name.toLowerCase().includes(searchTerm.toLowerCase()),
   );
 
+  // Calculate the start and end index of the recipes to be displayed
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const displayedRecipes = filteredRecipes.slice(0, endIndex);
+  // const displayedRecipes = sortedRecipes.slice(startIndex, endIndex);
 
   // Show the main page
   return (
@@ -72,12 +107,12 @@ function MainPage({ itemsPerPage }: MainPageProps) {
           <p>What do you feel like making:</p>
 
           <div className="search">
-            <SearchBar onChange={handleSearch} />
+            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <button>
               <img src="src\assets\searchIcon.png" />
             </button>
           </div>
-          
+
         </div>
 
         <img id="headerImg" src="src\assets\cooking.jpg" alt="cooking image" />
@@ -87,8 +122,9 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
         <div id="containerHeader">
           <p>Latest and greatest</p>
-          <Filter onChange={(option: Option) => console.log(option)} />
-        
+
+          {/* button for sorting */}
+          <Sort onChange={(option: Option) => setSelectedSort(option.value)} />
         </div>
 
 

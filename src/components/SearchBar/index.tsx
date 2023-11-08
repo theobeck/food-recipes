@@ -1,20 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './index.css';
 
 // Define the properties interface for the SearchBar component
 interface SearchBarProps {
-  onChange: (searchTerm: string) => void;
+  searchTerm: string;
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>
 }
 
 // Define the SearchBar functional component
 export default function SearchBar(props: SearchBarProps) {
-  const { onChange } = props;
-  const [searchTerm, setSearchTerm] = useState('');
+  const { searchTerm, setSearchTerm } = props;
 
   const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const searchTerm = event.target.value;
     setSearchTerm(searchTerm);
-    onChange(searchTerm);
   };
 
   // Show the SearchBar component
