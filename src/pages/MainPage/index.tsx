@@ -7,6 +7,9 @@ import { Option } from 'react-dropdown';
 import { useQuery } from '@apollo/client';
 import GET_ALL_RECIPES from './queries';
 import { GET_VEGETARIAN_RECIPES } from './queries';
+import logo from '../../assets/recipesLogo.png';
+import searchIcon from '../../assets/searchIcon.png';
+import cooking from '../../assets/cooking.jpg';
 
 // Define an interface "Recipe" that is representing a recipe
 interface Reviews {
@@ -37,15 +40,14 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   const loadMore = () => setCurrentPage((currentPage) => currentPage + 2);
 
   const allResult = useQuery(GET_ALL_RECIPES, {
-      // Use for filters and pagination
-      variables: { offset: 0, limit: currentPage * itemsPerPage },
-    });
-  
+    // Use for filters and pagination
+    variables: { offset: 0, limit: currentPage * itemsPerPage },
+  });
+
   const vegetarianResult = useQuery(GET_VEGETARIAN_RECIPES, {
     // Use for filters and pagination
     variables: { offset: 0, limit: currentPage * itemsPerPage },
   });
-  
 
   const loading = vegetarian ? vegetarianResult.loading : allResult.loading;
   const error = vegetarian ? vegetarianResult.error : allResult.error;
@@ -108,11 +110,13 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   return (
     <div className="main-page">
       <section className="nav">
-          <a href="/">
-            <img id="logo" src='/src/assets/recipesLogo.png' alt="Recipes Logo" />
-          </a>
-          <a id='aboutUs' target='_blank' href='https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D'> About us</a>
-        </section>
+        <a href={import.meta.env.BASE_URL}>
+          <img id="logo" src={logo} alt="Recipes Logo" />
+        </a>
+        <a id="aboutUs" target="_blank" href="https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D">
+          About us
+        </a>
+      </section>
 
       <section className="header">
         <div id="headerDiv">
@@ -121,27 +125,30 @@ function MainPage({ itemsPerPage }: MainPageProps) {
           <div className="search">
             <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <button>
-              <img src="src\assets\searchIcon.png" />
+              <img src={searchIcon} />
             </button>
           </div>
-
         </div>
 
-        <img id="headerImg" src="src\assets\cooking.jpg" alt="cooking image" />
+        <img id="headerImg" src={cooking} alt="cooking image" />
       </section>
 
       <div className="container">
-
         <div id="containerHeader">
           <p>Latest and greatest</p>
           <div className="filter">
             <label htmlFor="vegetarian">Vegetarian</label>
-            <input type="checkbox" id="vegetarian" name="vegetarian" checked={vegetarian} onChange={() => setVegetarian((prev) => !prev)} />
+            <input
+              type="checkbox"
+              id="vegetarian"
+              name="vegetarian"
+              checked={vegetarian}
+              onChange={() => setVegetarian((prev) => !prev)}
+            />
           </div>
           {/* button for sorting */}
           <Sort onChange={(option: Option) => setSelectedSort(option.value)} />
         </div>
-
 
         <div className="recipe-link">
           {displayedRecipes.map((recipe: Recipe) => (

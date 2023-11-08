@@ -4,22 +4,19 @@ import RecipeDetails from '../pages/RecipeDetails';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-  cache: new InMemoryCache()
+  uri: 'http://it2810-13.idi.ntnu.no:4000/',
+  cache: new InMemoryCache(),
 });
 
 function App() {
   return (
     <ApolloProvider client={client}>
-    <Router>
-      <Routes>
-        <Route
-          path="/recipe/:name"
-          element={<RecipeDetails />}
-        />
-        <Route path="/" element={<MainPage itemsPerPage={4} />} />
-      </Routes>
-    </Router>
+      <Router>
+        <Routes>
+          <Route path={import.meta.env.BASE_URL + '/recipe/:name'} element={<RecipeDetails />} />
+          <Route path={import.meta.env.BASE_URL} element={<MainPage itemsPerPage={4} />} />
+        </Routes>
+      </Router>
     </ApolloProvider>
   );
 }

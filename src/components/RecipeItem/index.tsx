@@ -1,5 +1,3 @@
-// RecipeListItem.tsx
-import React from 'react';
 import { Link } from 'react-router-dom';
 import './index.css';
 
@@ -27,7 +25,7 @@ export default function RecipeListItem(props: RecipeListItemProps) {
   //function to calculate the average rating of a recipe
   const AverageRating = () => {
     let sum = 0;
-    if(reviews.length === 0) return "No reviews";
+    if (reviews.length === 0) return 'No reviews';
     reviews.forEach((review) => {
       sum += review.rating;
     });
@@ -38,7 +36,7 @@ export default function RecipeListItem(props: RecipeListItemProps) {
   // Shows the div element with the recipe information
   return (
     <div key={id}>
-      <Link to={`/recipe/${id}`} className="recipe-link">
+      <Link to={`${import.meta.env.BASE_URL}/recipe/${id}`} className="recipe-link">
         <img src={imageUrl} alt={name} />
         <span className="recipe-name">{name}</span>
         <div className="ratingStars">
