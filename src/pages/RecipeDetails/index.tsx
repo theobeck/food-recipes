@@ -19,7 +19,7 @@ function RecipeDetails() {
   const id = parseInt(name || '0');
 
   // Apollo Client to fetch the recipe data
-  const { loading, error, data } = useQuery(GET_RECIPE, {
+  const { loading, error, data, refetch } = useQuery(GET_RECIPE, {
     variables: { id: id },
   });
 
@@ -76,7 +76,7 @@ function RecipeDetails() {
           <h2>Leave a rating!</h2>
 
           <div className="reviews">
-            <Review />
+            <Review refetch={refetch} />
             <h3>Reviews</h3>
             <ul>
               {recipe.reviews.map((review: Review, index: number) => (
