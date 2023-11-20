@@ -1,12 +1,11 @@
 import RecipeListItem from '../../components/RecipeItem';
 import Sort from '../../components/Sort';
+import { Option } from 'react-dropdown';
 import SearchBar from '../../components/SearchBar';
 import './index.css';
-import { useState } from 'react';
-import { Option } from 'react-dropdown';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import GET_ALL_RECIPES from './queries';
-import { GET_VEGETARIAN_RECIPES } from './queries';
+import RECIPES from './queries';
 import logo from '../../assets/recipesLogo.png';
 import searchIcon from '../../assets/searchIcon.png';
 import cooking from '../../assets/cooking.jpg';
@@ -33,80 +32,46 @@ interface MainPageProps {
 function MainPage({ itemsPerPage }: MainPageProps) {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState('');
-  const [selectedSort, setSelectedSort] = useState('');
+  const [selectedSort, setSelectedSort] = useState<string>(''); // Sort state for dropdown
   const [vegetarian, setVegetarian] = useState(false);
+  const [desert, setDesert] = useState(false);
+  const [chicken, setChicken] = useState(false);
+  const [beef, setBeef] = useState(false);
+  const [tags, setTags] = useState<string[]>([]); // Tags state for checkboxes
 
+  useEffect(() => {
+    const newTags = [];
+    if (vegetarian) newTags.push('vegetarian');
+    if (desert) newTags.push('desert');
+    if (chicken) newTags.push('chicken');
+    if (beef) newTags.push('beef');
+    setTags(newTags);
+  }, [vegetarian, desert, chicken, beef]);
+
+  //sort Change
+  const handleSortChange = (option: Option) => {
+    setSelectedSort(option.value);
+  }
   // function to load more recipes
-  const loadMore = () => setCurrentPage((currentPage) => currentPage + 2);
+  const loadMore = () => setCurrentPage(currentPage + 1);
 
-  const allResult = useQuery(GET_ALL_RECIPES, {
-    // Use for filters and pagination
-    variables: { offset: 0, limit: currentPage * itemsPerPage },
+  const { loading, error, data } = useQuery(RECIPES, {
+    variables: { 
+      offset: (currentPage - 1) * itemsPerPage, 
+      limit: itemsPerPage,
+      sort: selectedSort, // Pass sort state to query
+      tags, // Pass tags array to query
+      searchTerm
+    },
   });
-
-  const vegetarianResult = useQuery(GET_VEGETARIAN_RECIPES, {
-    // Use for filters and pagination
-    variables: { offset: 0, limit: currentPage * itemsPerPage },
-  });
-
-  const loading = vegetarian ? vegetarianResult.loading : allResult.loading;
-  const error = vegetarian ? vegetarianResult.error : allResult.error;
-  const data = vegetarian ? vegetarianResult.data : allResult.data;
-
-  //TODO: FETCH MORE
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  const averageRating = (reviews: Reviews[]): number => {
-    let sum = 0;
-    if (reviews.length === 0) return 0;
-    reviews.forEach((review) => {
-      sum += review.rating;
-    });
-    return sum / reviews.length;
-  };
-
-  // function to sort recipes by highest rating
-  const sortRecipesByHighestRating = (recipes: Recipe[]) => {
-    recipes.sort((a, b) => {
-      // Find the highest rating for each recipe
-      const highestRatingA = averageRating(a.reviews);
-      const highestRatingB = averageRating(b.reviews);
-      // Compare the highest ratings
-      return highestRatingB - highestRatingA;
-    });
-    return recipes;
-  };
-
-  // function to sort recipes by alphabetical order
-  const sortRecipesByAlphabeticalOrder = (recipes: Recipe[]) => {
-    return recipes.sort((a, b) => a.name.localeCompare(b.name));
-  };
-
   // Get all the recipes from the database
-  const recipes = (vegetarian ? data?.getAllVegetarianRecipes : data?.getAllRecipes) || [];
+  const recipes: Recipe[] = data?.getRecipes || [];
 
-  // Sort the recipes based on the selected sort option
-  let sortedRecipes = [...recipes];
-  if (selectedSort === 'highest-rating') {
-    sortedRecipes = sortRecipesByHighestRating(sortedRecipes);
-  } else if (selectedSort === 'alphabetical-order') {
-    sortedRecipes = sortRecipesByAlphabeticalOrder(sortedRecipes);
-  }
 
-  // Filter the recipes based on the search term
-  const filteredRecipes = sortedRecipes.filter((recipe: Recipe) =>
-    recipe.name.toLowerCase().includes(searchTerm.toLowerCase()),
-  );
-
-  // Calculate the start and end index of the recipes to be displayed
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const displayedRecipes = filteredRecipes.slice(0, endIndex);
-  // const displayedRecipes = sortedRecipes.slice(startIndex, endIndex);
-
-  // Show the main page
   return (
     <div className="main-page">
       <section className="nav">
@@ -141,25 +106,43 @@ function MainPage({ itemsPerPage }: MainPageProps) {
             <input
               type="checkbox"
               id="vegetarian"
-              name="vegetarian"
               checked={vegetarian}
-              onChange={() => setVegetarian((prev) => !prev)}
+              onChange={() => setVegetarian(!vegetarian)}
+            />
+            <label htmlFor="desert">Desert</label>
+            <input
+              type="checkbox"
+              id="desert"
+              checked={desert}
+              onChange={() => setDesert(!desert)}
+            />
+            <label htmlFor="chicken">Chicken</label>
+            <input
+              type="checkbox"
+              id="chicken"
+              checked={chicken}
+              onChange={() => setChicken(!chicken)}
+            />
+            <label htmlFor="beef">Beef</label>
+            <input
+              type="checkbox"
+              id="beef"
+              checked={beef}
+              onChange={() => setBeef(!beef)}
             />
           </div>
           {/* button for sorting */}
-          <Sort onChange={(option: Option) => setSelectedSort(option.value)} />
+          <Sort onChange={handleSortChange} />
         </div>
 
         <div className="recipe-link">
-          {displayedRecipes.map((recipe: Recipe) => (
+          {recipes.map((recipe: Recipe) => (
             <RecipeListItem key={recipe.id} recipe={recipe} />
           ))}
         </div>
-        {displayedRecipes.length < filteredRecipes.length && (
-          <button id="loadMore" onClick={loadMore}>
-            Load More
-          </button>
-        )}
+        <button id="loadMore" onClick={loadMore}>
+          Load More
+        </button>
       </div>
     </div>
   );

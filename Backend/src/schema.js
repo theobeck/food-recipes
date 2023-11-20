@@ -15,11 +15,11 @@ export const typeDefs = gql`
     instructions: [String]
     reviews: [Review]
     vegetarian: Boolean
+    tags: [String]
   }
 
   type Query {
-    getAllRecipes: [Recipe]
-    getAllVegetarianRecipes: [Recipe]
+    getRecipes(limit: Int, offset: Int, sort: String, tags: [String], searchTerm: String): [Recipe]
     getRecipeById(id: Int!): Recipe
     getRecipeByName(name: String!): Recipe
   }
@@ -38,6 +38,7 @@ export const typeDefs = gql`
     ingredients: [String]
     instructions: [String]
     reviews: [ReviewInput]
+    tags: [String]
   }
   input ReviewInput {
     rating: Int!

@@ -1,30 +1,28 @@
 import { gql } from '@apollo/client';
 
-const GET_ALL_RECIPES = gql`
-    query GetAllRecipes {
-        getAllRecipes {
-            id
-            name
-            imageUrl
-            reviews {
-                rating
-                comment 
-            }
-        }
+const RECIPES = gql`
+      query getRecipes(
+    $limit: Int,
+    $offset: Int,
+    $sort: String,
+    $tags: [String],
+    $searchTerm: String
+  ) {
+    getRecipes(
+      limit: $limit,
+      offset: $offset,
+      sort: $sort,
+      tags: $tags
+      searchTerm: $searchTerm
+    ) {
+      id
+      name
+      imageUrl
+      reviews {
+        rating
+        comment 
+      }
     }
+  }
 `;
-const GET_VEGETARIAN_RECIPES = gql`
-    query getAllVegetarianRecipes {
-        getAllVegetarianRecipes {
-            id
-            name
-            imageUrl
-            reviews {
-                rating
-                comment 
-            }
-        }
-    }
-`;
-export { GET_VEGETARIAN_RECIPES };
-export default GET_ALL_RECIPES;
+export default RECIPES;
