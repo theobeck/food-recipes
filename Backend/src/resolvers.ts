@@ -1,17 +1,55 @@
 import Recipe, { RecipeDocument, Review } from '../src/model.js';
 
+interface Query {
+  [key: string]: string | { $all: string[] } | { $regex: string; $options: string };
+}
 
 const resolvers = {
   Query: {
-    getAllRecipes: async () => {
-      try {
-        const recipes = await Recipe.find({});
-        return recipes.map((recipe: RecipeDocument) => ({ ...recipe.toObject() }));
-      } catch (err) {
-        console.error(err);
-        throw err;
+    getRecipes: async (
+      _,
+      {
+        limit = 4,
+        offset = 0,
+        sort,
+        tags,
+        searchTerm,
       }
-    },
+    ) => {
+        const query: Query = {};
+        if (tags && tags.length > 0) {
+          query['tags'] = { $all: tags };
+        }
+        if(searchTerm) {
+          query['name'] = { $regex: searchTerm, $options: 'i' };
+        }
+
+        let Sort = {};
+        if (sort === 'highest-rating') {
+          Sort = { 'reviews.rating': -1 }; 
+        } else if (sort === 'alphabetical-order') {
+          Sort = { name: 1 }; 
+        }
+        try {
+          const recipes = await Recipe.find(query)
+          .sort(Sort)
+          .skip(offset)
+          .limit(limit)
+
+        //total number of recipes
+        const totalRecipes = await Recipe.countDocuments(query);
+
+        const mappedRecipes = recipes.map((recipe: RecipeDocument) => ({ ...recipe.toObject() }));
+
+        return {
+          recipes: mappedRecipes,
+          totalCount: totalRecipes
+        };
+        } catch (error) {
+          console.error(error);
+          throw new Error('Error while fetching recipes');
+        }
+      },
     getRecipeById: async (parent, args: { id: number }) => {
       return Recipe.findOne({
         id: args.id,
@@ -28,13 +66,6 @@ const resolvers = {
         console.error(err);
       });
     },
-    getAllVegetarianRecipes: async () => {
-      return Recipe.find({ vegetarian: true}).then((recipes: RecipeDocument[]) => {
-        return recipes.map((recipe: RecipeDocument) => ({ ...recipe.toObject() }));
-      }).catch(err => {
-        console.error(err);
-      });
-    }
   },
   Mutation: {
     addRecipe: (parent, args: {

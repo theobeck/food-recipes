@@ -30,6 +30,10 @@ const recipesSchema = new Schema({
     type: Boolean,
     required: false,
   },
+  tags: {
+    type: [String],
+    required: false,
+  },
   reviews: [
     // Subdocument schema for reviews
     new Schema({
