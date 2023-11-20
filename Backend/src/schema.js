@@ -19,7 +19,7 @@ export const typeDefs = gql`
   }
 
   type Query {
-    getRecipes(limit: Int, offset: Int, sort: String, tags: [String], searchTerm: String): [Recipe]
+    getRecipes(limit: Int, offset: Int, sort: String, tags: [String], searchTerm: String): RecipeResponse
     getRecipeById(id: Int!): Recipe
     getRecipeByName(name: String!): Recipe
   }
@@ -29,6 +29,10 @@ export const typeDefs = gql`
     updateRecipe(id: ID!, input: RecipeInput!): Recipe
     deleteRecipe(id: ID!): Recipe
     addReview(id: Int!, rating: Int!, comment: String!): Recipe
+  }
+  type RecipeResponse {
+    recipes: [Recipe]
+    totalCount: Int
   }
 
   input RecipeInput {

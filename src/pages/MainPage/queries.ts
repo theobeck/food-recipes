@@ -15,6 +15,7 @@ const RECIPES = gql`
       tags: $tags
       searchTerm: $searchTerm
     ) {
+    recipes {
       id
       name
       imageUrl
@@ -22,6 +23,8 @@ const RECIPES = gql`
         rating
         comment 
       }
+    }
+    totalCount
     }
   }
 `;

@@ -2,6 +2,7 @@ import RecipeListItem from '../../components/RecipeItem';
 import Sort from '../../components/Sort';
 import { Option } from 'react-dropdown';
 import SearchBar from '../../components/SearchBar';
+import Pagination from '../../components/Pagination';
 import './index.css';
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
@@ -38,6 +39,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   const [chicken, setChicken] = useState(false);
   const [beef, setBeef] = useState(false);
   const [tags, setTags] = useState<string[]>([]); // Tags state for checkboxes
+  const [totalRecipes, setTotalRecipes] = useState(0);
 
   useEffect(() => {
     const newTags = [];
@@ -52,8 +54,6 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   const handleSortChange = (option: Option) => {
     setSelectedSort(option.value);
   }
-  // function to load more recipes
-  const loadMore = () => setCurrentPage(currentPage + 1);
 
   const { loading, error, data } = useQuery(RECIPES, {
     variables: { 
@@ -65,12 +65,24 @@ function MainPage({ itemsPerPage }: MainPageProps) {
     },
   });
 
+  useEffect(() => {
+    if (data && data.getRecipes && 'totalCount' in data.getRecipes) {
+      setTotalRecipes(data.getRecipes.totalCount);
+    }
+  }, [data]);
+
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
 
-  // Get all the recipes from the database
-  const recipes: Recipe[] = data?.getRecipes || [];
 
+  // Get all the recipes from the database
+  const recipes: Recipe[] = data?.getRecipes?.recipes ?? [];
+
+  const noRecipesFound = recipes.length === 0 && !loading;
+
+  const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
+    setCurrentPage(newPage);
+  };
 
   return (
     <div className="main-page">
@@ -132,17 +144,24 @@ function MainPage({ itemsPerPage }: MainPageProps) {
             />
           </div>
           {/* button for sorting */}
-          <Sort onChange={handleSortChange} />
+          <Sort onChange={handleSortChange} value={selectedSort} />
         </div>
 
         <div className="recipe-link">
-          {recipes.map((recipe: Recipe) => (
-            <RecipeListItem key={recipe.id} recipe={recipe} />
-          ))}
+          {noRecipesFound ? (
+            <p>No recipes found</p>
+          ) : (
+            recipes.map((recipe: Recipe) => (
+              <RecipeListItem key={recipe.id} recipe={recipe} />
+            ))
+          )}
         </div>
-        <button id="loadMore" onClick={loadMore}>
-          Load More
-        </button>
+        <Pagination 
+          total={totalRecipes} 
+          itemsPerPage={itemsPerPage} 
+          currentPage={currentPage} 
+          setPage={handlePageChange}
+        />
       </div>
     </div>
   );

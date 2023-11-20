@@ -1,28 +1,28 @@
 import Recipe, { RecipeDocument, Review } from '../src/model.js';
 
+interface Query {
+  [key: string]: string | { $all: string[] } | { $regex: string; $options: string };
+}
 
 const resolvers = {
   Query: {
     getRecipes: async (
       _,
       {
-        limit = 10,
+        limit = 4,
         offset = 0,
         sort,
         tags,
         searchTerm,
       }
     ) => {
-        let query = {};
-
-        if (tags) {
-          query = { tags: { $all: tags } };
+        const query: Query = {};
+        if (tags && tags.length > 0) {
+          query['tags'] = { $all: tags };
         }
         if(searchTerm) {
-          query = { name: { $regex: searchTerm, $options: 'i' } };
+          query['name'] = { $regex: searchTerm, $options: 'i' };
         }
-
-        const Offset = offset * limit;
 
         let Sort = {};
         if (sort === 'highest-rating') {
@@ -33,9 +33,18 @@ const resolvers = {
         try {
           const recipes = await Recipe.find(query)
           .sort(Sort)
-          .skip(Offset)
+          .skip(offset)
           .limit(limit)
-        return recipes.map((recipe: RecipeDocument) => ({ ...recipe.toObject() }));
+
+        //total number of recipes
+        const totalRecipes = await Recipe.countDocuments(query);
+
+        const mappedRecipes = recipes.map((recipe: RecipeDocument) => ({ ...recipe.toObject() }));
+
+        return {
+          recipes: mappedRecipes,
+          totalCount: totalRecipes
+        };
         } catch (error) {
           console.error(error);
           throw new Error('Error while fetching recipes');
