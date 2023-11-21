@@ -1,23 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './index.css';
+import searchIcon from '../../assets/searchIcon.png';
 
-// Define the properties interface for the SearchBar component
 interface SearchBarProps {
-  searchTerm: string;
-  setSearchTerm: React.Dispatch<React.SetStateAction<string>>
+  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
 }
 
-// Define the SearchBar functional component
-export default function SearchBar(props: SearchBarProps) {
-  const { searchTerm, setSearchTerm } = props;
+export default function SearchBar({ setSearchTerm }: SearchBarProps) {
+  const [localSearchTerm, setLocalSearchTerm] = useState('');
 
-  const handleSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const searchTerm = event.target.value;
-    setSearchTerm(searchTerm);
+  const handleSearch = () => {
+    setSearchTerm(localSearchTerm);
   };
 
-  // Show the SearchBar component
-  return <input className="search-bar" type="text" placeholder="Search" value={searchTerm} onChange={handleSearch} />;
-  
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setLocalSearchTerm(event.target.value);
+  };
+
+  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      handleSearch();
+    }
+  };
+
+  return (
+    <div className="search-bar-container">
+      <input
+        className="search-bar"
+        type="text"
+        placeholder="Search"
+        value={localSearchTerm}
+        onChange={handleInputChange}
+        onKeyDown={handleKeyPress}
+        autoFocus
+      />
+      <button onClick={handleSearch}>
+        <img src={searchIcon} alt="Search" />
+      </button>
+    </div>
+  );
 }
+
 
