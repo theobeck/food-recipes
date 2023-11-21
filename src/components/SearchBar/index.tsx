@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './index.css';
 import searchIcon from '../../assets/searchIcon.png';
 
@@ -9,19 +9,17 @@ interface SearchBarProps {
 export default function SearchBar({ setSearchTerm }: SearchBarProps) {
   const [localSearchTerm, setLocalSearchTerm] = useState('');
 
-  const handleSearch = () => {
-    setSearchTerm(localSearchTerm);
-  };
-
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setLocalSearchTerm(event.target.value);
   };
 
-  const handleKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
-    if (event.key === 'Enter') {
-      handleSearch();
-    }
-  };
+  useEffect(() => {
+    const delayDebounce = setTimeout(() => {
+      setSearchTerm(localSearchTerm);
+    }, 300); // Delay of 300 ms
+
+    return () => clearTimeout(delayDebounce);
+  }, [localSearchTerm, setSearchTerm]);
 
   return (
     <div className="search-bar-container">
@@ -31,14 +29,9 @@ export default function SearchBar({ setSearchTerm }: SearchBarProps) {
         placeholder="Search"
         value={localSearchTerm}
         onChange={handleInputChange}
-        onKeyDown={handleKeyPress}
         autoFocus
       />
-      <button onClick={handleSearch}>
-        <img src={searchIcon} alt="Search" />
-      </button>
+      <img src={searchIcon} alt="Search" />
     </div>
   );
 }
-
-
