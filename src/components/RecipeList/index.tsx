@@ -28,7 +28,7 @@ const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm,
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalRecipes, setTotalRecipes] = useState<number>(0);
   const navigate = useNavigate();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const { loading, error, data } = useQuery(RECIPES, {
     variables: { 
@@ -47,14 +47,13 @@ const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm,
   }, [data]);
 
   useEffect(() => {
-    const pageFromUrl = parseInt(searchParams.get('page') || '', 10);
+    const pageFromUrl = parseInt(searchParams.get('page') || '1', 10);
     if (!isNaN(pageFromUrl) && pageFromUrl > 0) {
       setCurrentPage(pageFromUrl);
     } else {
-      setCurrentPage(1);
-      navigate('/?page=1');
+      setSearchParams({ page: '1' });
     }
-  }, [searchParams, navigate]);
+  }, [searchParams, navigate, setSearchParams]);
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
     setCurrentPage(newPage);
