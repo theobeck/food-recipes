@@ -3,7 +3,7 @@ import { useQuery } from '@apollo/client';
 import RecipeListItem from '../RecipeItem';
 import Pagination from '../Pagination';
 import RECIPES from './queries';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 
 interface Reviews {
   rating: number;
@@ -27,8 +27,8 @@ interface RecipeListProps {
 const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm, itemsPerPage }) => {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [totalRecipes, setTotalRecipes] = useState<number>(0);
-  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
+  const [filterChanged, setFilterChanged] = useState<boolean>(false);
 
   const { loading, error, data } = useQuery(RECIPES, {
     variables: { 
@@ -47,16 +47,25 @@ const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm,
   }, [data]);
 
   useEffect(() => {
-    const pageFromUrl = parseInt(searchParams.get('page') || '1', 10);
-    if (!isNaN(pageFromUrl) && pageFromUrl > 0) {
-      setCurrentPage(pageFromUrl);
-    } else {
+    // Set filterChanged flag when sort, tags, or searchTerm changes
+      setFilterChanged(true);
+  }, [selectedSort, tags, searchTerm]);
+  
+  useEffect(() => {
+    if (filterChanged) {
       setSearchParams({ page: '1' });
+      setFilterChanged(false); // Reset the flag after setting search params
+    } else {
+      const pageFromUrl = parseInt(searchParams.get('page') || '1', 10);
+      if (!isNaN(pageFromUrl) && pageFromUrl > 0) {
+        setCurrentPage(pageFromUrl);
+      }
     }
-  }, [searchParams, navigate, setSearchParams]);
+  }, [searchParams, setSearchParams, filterChanged]);
 
   const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
     setCurrentPage(newPage);
+    setSearchParams({ page: newPage.toString() });
   };
 
   if (loading) return <p>Loading...</p>;

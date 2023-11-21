@@ -1,4 +1,25 @@
 import Recipe, { RecipeDocument, Review } from '../src/model.js';
+type MatchStage = {
+  $match: { [key: string]: unknown };
+};
+
+type AddFieldsStage = {
+  $addFields: { [key: string]: unknown };
+};
+
+type SortStage = {
+  $sort: { [key: string]: 1 | -1 };
+};
+
+type SkipStage = {
+  $skip: number;
+};
+
+type LimitStage = {
+  $limit: number;
+};
+
+type AggregationStage = MatchStage | AddFieldsStage | SortStage | SkipStage | LimitStage;
 
 interface Query {
   [key: string]: string | { $all: string[] } | { $regex: string; $options: string };
@@ -15,41 +36,48 @@ const resolvers = {
         tags,
         searchTerm,
       }
-    ) => {
-        const query: Query = {};
-        if (tags && tags.length > 0) {
-          query['tags'] = { $all: tags };
-        }
-        if(searchTerm) {
-          query['name'] = { $regex: searchTerm, $options: 'i' };
-        }
+    ): Promise<{ recipes: RecipeDocument[], totalCount: number }> => {
+      const query: Query = {};
+      if (tags && tags.length > 0) {
+        query['tags'] = { $all: tags };
+      }
+      if (searchTerm) {
+        query['name'] = { $regex: searchTerm, $options: 'i' };
+      }
 
-        let Sort = {};
-        if (sort === 'highest-rating') {
-          Sort = { 'reviews.rating': -1 }; 
-        } else if (sort === 'alphabetical-order') {
-          Sort = { name: 1 }; 
+      const pipeline: AggregationStage[] = [ // Create the aggregation pipeline
+        { $match: query },
+        {
+          $addFields: {
+            averageRating: { $avg: "$reviews.rating" } // Calculate the average rating
+          }
         }
-        try {
-          const recipes = await Recipe.find(query)
-          .sort(Sort)
-          .skip(offset)
-          .limit(limit)
+      ];
 
-        //total number of recipes
+      if (sort === 'highest-rating') {
+        pipeline.push({ $sort: { averageRating: -1 } });
+      } else if (sort === 'alphabetical-order') {
+        pipeline.push({ $sort: { name: 1 } });
+      }
+
+      pipeline.push({ $skip: offset }, { $limit: limit });
+
+      try {
+        const recipes = await Recipe.aggregate(pipeline);
+
+        // Total number of recipes
         const totalRecipes = await Recipe.countDocuments(query);
 
-        const mappedRecipes = recipes.map((recipe: RecipeDocument) => ({ ...recipe.toObject() }));
-
         return {
-          recipes: mappedRecipes,
+          recipes,
           totalCount: totalRecipes
         };
-        } catch (error) {
-          console.error(error);
-          throw new Error('Error while fetching recipes');
-        }
-      },
+      } catch (error) {
+        console.error(error);
+        throw new Error('Error while fetching recipes');
+      }
+    },
+    
     getRecipeById: async (parent, args: { id: number }) => {
       return Recipe.findOne({
         id: args.id,

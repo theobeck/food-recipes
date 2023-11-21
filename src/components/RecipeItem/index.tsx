@@ -21,13 +21,16 @@ interface RecipeListItemProps {
 export default function RecipeListItem({ recipe }: RecipeListItemProps) {
   const { id, name, imageUrl, reviews } = recipe;
 
+  const safeReviews = reviews || [];
+
   const averageRating = useMemo(() => {
     let sum = 0;
-    if (reviews.length === 0) return 'No reviews';
-    reviews.forEach(review => {
+    if (safeReviews.length === 0) return 'No reviews';
+    safeReviews.forEach(review => {
       sum += review.rating;
     });
-    return (sum / reviews.length).toFixed(1);
+    return (sum / safeReviews.length).toFixed(1);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [reviews]);
 
   return (
