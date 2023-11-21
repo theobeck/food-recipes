@@ -53,19 +53,30 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
       <section className="header">
         <div id="headerDiv">
-          <p>What do you feel like making:</p>
+          <p>Get inspired with recipes from all around the world, made easy and accessable</p>
 
-          <div className="search">
-            <SearchBar setSearchTerm= {setSearchTerm} />
-          </div>
         </div>
 
         <img id="headerImg" src={cooking} alt="cooking image" />
       </section>
 
+      <div id='containerHeader'>
+        <p>Latest and greatest</p>
+        <div className="search">
+          <SearchBar setSearchTerm= {setSearchTerm} />
+        </div>
+
+
+        <Sort onChange={handleSortChange} value={selectedSort} />
+
+      </div>
+
+
       <div className="container">
-        <div id="containerHeader">
-          <p>Latest and greatest</p>
+
+        <div id="containerBody">
+
+
           <div className="filter">
             <label htmlFor="vegetarian">Vegetarian</label>
             <input
@@ -88,16 +99,16 @@ function MainPage({ itemsPerPage }: MainPageProps) {
               checked={chicken}
               onChange={() => setChicken(!chicken)}
             />
-            <label htmlFor="beef">Beef</label>
-            <input
-              type="checkbox"
-              id="beef"
-              checked={beef}
-              onChange={() => setBeef(!beef)}
-            />
+              <label htmlFor="beef">Beef</label>
+              <input
+                type="button"
+                placeholder="Beef"
+                id="beef"
+                checked={beef}
+                onChange={() => setBeef(!beef)}
+              />
+              
           </div>
-          {/* button for sorting */}
-          <Sort onChange={handleSortChange} value={selectedSort} />
         </div>
 
         <RecipeList
