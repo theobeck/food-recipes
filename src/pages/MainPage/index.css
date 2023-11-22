@@ -151,7 +151,7 @@ body {
   }
 }
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 924px) {
   #headerImg {
     width: 60vh;
     height: 70vh;
