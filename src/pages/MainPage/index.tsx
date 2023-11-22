@@ -21,6 +21,9 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   const [desert, setDesert] = useState<boolean>(false);
   const [chicken, setChicken] = useState<boolean>(false);
   const [beef, setBeef] = useState<boolean>(false);
+  const [asian, setAsian] = useState<boolean>(false);
+  const [japanese, setJapanese] = useState<boolean>(false);
+  const [soup, setSoup] = useState<boolean>(false);
   const [tags, setTags] = useState<string[]>([]);
 
   useEffect(() => {
@@ -29,8 +32,11 @@ function MainPage({ itemsPerPage }: MainPageProps) {
     if (desert) newTags.push('desert');
     if (chicken) newTags.push('chicken');
     if (beef) newTags.push('beef');
+    if (asian) newTags.push('asian');
+    if (japanese) newTags.push('japanese'); 
+    if (soup) newTags.push('soup');
     setTags(newTags);
-  }, [vegetarian, desert, chicken, beef]);
+  }, [vegetarian, desert, chicken, beef, asian, japanese, soup]);
 
 
 
@@ -53,51 +59,46 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
       <section className="header">
         <div id="headerDiv">
-          <p>What do you feel like making:</p>
+          <p>Get inspired with recipes from all around the world, made easy and accessable</p>
 
-          <div className="search">
-            <SearchBar setSearchTerm= {setSearchTerm} />
-          </div>
         </div>
 
         <img id="headerImg" src={cooking} alt="cooking image" />
       </section>
 
+      <div id='containerHeader'>
+
+        <div className="search">
+          <SearchBar setSearchTerm= {setSearchTerm} />
+        </div>
+        <Sort onChange={handleSortChange} value={selectedSort} />
+
+      </div>
+
+
       <div className="container">
-        <div id="containerHeader">
-          <p>Latest and greatest</p>
+
+        <div id="containerBody">
+
+
           <div className="filter">
-            <label htmlFor="vegetarian">Vegetarian</label>
-            <input
-              type="checkbox"
-              id="vegetarian"
-              checked={vegetarian}
-              onChange={() => setVegetarian(!vegetarian)}
-            />
-            <label htmlFor="desert">Desert</label>
-            <input
-              type="checkbox"
-              id="desert"
-              checked={desert}
-              onChange={() => setDesert(!desert)}
-            />
-            <label htmlFor="chicken">Chicken</label>
-            <input
-              type="checkbox"
-              id="chicken"
-              checked={chicken}
-              onChange={() => setChicken(!chicken)}
-            />
-            <label htmlFor="beef">Beef</label>
-            <input
-              type="checkbox"
-              id="beef"
-              checked={beef}
-              onChange={() => setBeef(!beef)}
-            />
+            <label htmlFor="vegetarian" className={vegetarian ? 'labelChecked' : 'labelUnchecked'}  onClick={() => setVegetarian(!vegetarian)}>Vegetarian</label>
+            
+            <label className={desert ? 'labelChecked' : 'labelUnchecked'} htmlFor="desert" onClick={() => setDesert(!desert)}>Desert</label>
+         
+            <label className={chicken ? 'labelChecked' : 'labelUnchecked'}  htmlFor="chicken" onClick={() => setChicken(!chicken)}
+            >Chicken</label>
+           
+            <label className={beef ? 'labelChecked' : 'labelUnchecked'} htmlFor="beef" onClick={() => setBeef(!beef)}>Beef</label>
+
+            <label className={asian ? 'labelChecked' : 'labelUnchecked'} htmlFor="asian" onClick={() => setAsian(!asian)}>Asian</label>
+
+            <label className={japanese ? 'labelChecked' : 'labelUnchecked'} htmlFor="japanese" onClick={() => setJapanese(!japanese)}>Japanese</label>
+
+            <label className={soup ? 'labelChecked' : 'labelUnchecked'} htmlFor="soup" onClick={() => setSoup(!soup)}>Soup</label>
+            
+              
           </div>
-          {/* button for sorting */}
-          <Sort onChange={handleSortChange} value={selectedSort} />
         </div>
 
         <RecipeList

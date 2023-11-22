@@ -37,11 +37,16 @@ export default function RecipeListItem({ recipe }: RecipeListItemProps) {
     <div>
       <Link to={`${import.meta.env.BASE_URL}/recipe/${id}`} className="recipe-link">
         <img src={imageUrl} alt={name} />
-        <span className="recipe-name">{name}</span>
-        <div className="ratingStars">
-          <span className="rating-number">{averageRating}</span>
-          <span className="rating-star">★</span>
+
+        <div className="overlay">
+          <span className="recipe-name">{name}</span>
+          <div className="ratingStars">
+             <span className="rating-number">{averageRating}</span>
+            <span className="rating-star">★</span>
+          </div>
+
         </div>
+
       </Link>
     </div>
   );
