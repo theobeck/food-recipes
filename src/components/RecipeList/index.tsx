@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import RecipeListItem from '../RecipeItem';
 import Pagination from '../Pagination';
@@ -31,12 +31,12 @@ const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm,
   const [filterChanged, setFilterChanged] = useState<boolean>(false);
 
   const { loading, error, data } = useQuery(RECIPES, {
-    variables: { 
+    variables: {
       offset: (currentPage - 1) * itemsPerPage,
       limit: itemsPerPage,
       sort: selectedSort,
       tags,
-      searchTerm
+      searchTerm,
     },
   });
 
@@ -48,9 +48,9 @@ const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm,
 
   useEffect(() => {
     // Set filterChanged flag when sort, tags, or searchTerm changes
-      setFilterChanged(true);
+    setFilterChanged(true);
   }, [selectedSort, tags, searchTerm]);
-  
+
   useEffect(() => {
     if (filterChanged) {
       setSearchParams({ page: '1' });
@@ -63,7 +63,7 @@ const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm,
     }
   }, [searchParams, setSearchParams, filterChanged]);
 
-  const handlePageChange = (event: React.ChangeEvent<unknown>, newPage: number) => {
+  const handlePageChange = (_event: React.ChangeEvent<unknown>, newPage: number) => {
     setCurrentPage(newPage);
     setSearchParams({ page: newPage.toString() });
   };

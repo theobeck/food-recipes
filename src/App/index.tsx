@@ -4,7 +4,8 @@ import RecipeDetails from '../pages/RecipeDetails';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
 
 const client = new ApolloClient({
-  uri: 'http://it2810-13.idi.ntnu.no:4000/',
+  // uri: 'http://it2810-13.idi.ntnu.no:4000/',
+  uri: 'localhost:5173/project2/',
   cache: new InMemoryCache(),
 });
 

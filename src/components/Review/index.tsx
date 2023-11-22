@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import ReactStars from 'react-stars';
 import { useParams } from 'react-router-dom';
 import { ApolloQueryResult, OperationVariables, useMutation } from '@apollo/client';
-import { ADD_REVIEW } from './queries'; 
+import { ADD_REVIEW } from './queries';
 
 interface ReviewProps {
     refetch: (variables?: Partial<OperationVariables> | undefined) => Promise<ApolloQueryResult<unknown>>
@@ -12,12 +12,12 @@ export default function Review({ refetch }: ReviewProps) {
     const [rating, setRating] = useState(0); // Initialize rating as a state
     const [comment, setComment] = useState(''); // Initialize comment as a state
     const { name } = useParams(); // Get the recipe ID from the URL
-    const [ addReview ] = useMutation(ADD_REVIEW); 
-    
+    const [ addReview ] = useMutation(ADD_REVIEW);
+
     // Convert 'name' to an integer
     const id = parseInt(name || "", 10);
 
-    
+
     const ratingChanged = (newRating: React.SetStateAction<number>) => {
         setRating(newRating);
     }
@@ -41,7 +41,7 @@ export default function Review({ refetch }: ReviewProps) {
             //restet rating og comment
             setRating(0);
             setComment('');
-            
+
         } catch (error) {
             console.error('Error uploading', error);
         }
