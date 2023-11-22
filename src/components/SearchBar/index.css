@@ -10,11 +10,8 @@
 
 .search-bar-container {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   border: none;
   border-radius: 1vh;
-  padding: 0 1vh;
 }
 
 .searchBar:focus {
@@ -27,13 +24,14 @@
   opacity: 0.5;
 }
 
-.search button {
+.search img {
   background-color: rgba(235, 13, 13, 0);
   border-radius: 1vh;
-  padding: 5px 15px;
   border: none;
+  padding: 1vh;
+  max-width: 3vh;
 }
 
-.search-bar-container img:hover {
-  background-color: #4f4c4c;
+.search:hover {
+  background-color: #d2baaa26;
 }

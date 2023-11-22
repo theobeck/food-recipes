@@ -22,6 +22,8 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   const [chicken, setChicken] = useState<boolean>(false);
   const [beef, setBeef] = useState<boolean>(false);
   const [asian, setAsian] = useState<boolean>(false);
+  const [japanese, setJapanese] = useState<boolean>(false);
+  const [soup, setSoup] = useState<boolean>(false);
   const [tags, setTags] = useState<string[]>([]);
 
   useEffect(() => {
@@ -31,8 +33,10 @@ function MainPage({ itemsPerPage }: MainPageProps) {
     if (chicken) newTags.push('chicken');
     if (beef) newTags.push('beef');
     if (asian) newTags.push('asian');
+    if (japanese) newTags.push('japanese'); 
+    if (soup) newTags.push('soup');
     setTags(newTags);
-  }, [vegetarian, desert, chicken, beef, asian]);
+  }, [vegetarian, desert, chicken, beef, asian, japanese, soup]);
 
 
 
@@ -48,6 +52,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
         <a href={import.meta.env.BASE_URL}>
           <img id="logo" src={logo} alt="Recipes Logo" />
         </a>
+        <a href='../Categories/index.tsx' className={vegetarian ? 'labelChecked' : 'labelUnchecked'}  onClick={() => setVegetarian(!vegetarian)}>Vegetarian</a>
         <a id="aboutUs" target="_blank" href="https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D">
           About us
         </a>
@@ -64,6 +69,9 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
       <div id='containerHeader'>
 
+        <div className="search">
+          <SearchBar setSearchTerm= {setSearchTerm} />
+        </div>
         <Sort onChange={handleSortChange} value={selectedSort} />
 
       </div>
@@ -73,9 +81,6 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
         <div id="containerBody">
 
-          <div className="search">
-            <SearchBar setSearchTerm= {setSearchTerm} />
-          </div>
 
           <div className="filter">
             <label htmlFor="vegetarian" className={vegetarian ? 'labelChecked' : 'labelUnchecked'}  onClick={() => setVegetarian(!vegetarian)}>Vegetarian</label>
@@ -88,6 +93,10 @@ function MainPage({ itemsPerPage }: MainPageProps) {
             <label className={beef ? 'labelChecked' : 'labelUnchecked'} htmlFor="beef" onClick={() => setBeef(!beef)}>Beef</label>
 
             <label className={asian ? 'labelChecked' : 'labelUnchecked'} htmlFor="asian" onClick={() => setAsian(!asian)}>Asian</label>
+
+            <label className={japanese ? 'labelChecked' : 'labelUnchecked'} htmlFor="japanese" onClick={() => setJapanese(!japanese)}>Japanese</label>
+
+            <label className={soup ? 'labelChecked' : 'labelUnchecked'} htmlFor="soup" onClick={() => setSoup(!soup)}>Soup</label>
             
               
           </div>

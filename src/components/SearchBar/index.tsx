@@ -23,6 +23,7 @@ export default function SearchBar({ setSearchTerm }: SearchBarProps) {
 
   return (
     <div className="search-bar-container">
+      <img src={searchIcon} alt="Search" />
       <input
         className="search-bar"
         type="text"
@@ -31,7 +32,6 @@ export default function SearchBar({ setSearchTerm }: SearchBarProps) {
         onChange={handleInputChange}
         autoFocus
       />
-      <img src={searchIcon} alt="Search" />
     </div>
   );
 }

@@ -31,29 +31,24 @@ body {
 }
 
 .header p {
-  font-size: 20pt;
+  font-size: 30pt;
+  letter-spacing: normal;
   margin-bottom: 10vh;
   color: #f0f0f0;
-  letter-spacing: 5px;
+  letter-spacing: 7px;
+  line-height: 2;
 }
 
 .header #headerDiv {
   margin: 7%;
 }
 
-.search div img {
-  max-width: 3vh;
-}
-
-.search div {
-  display: flex;
+.search {
   align-items: baseline;
   justify-content: space-between;
-  background-color: #d2b9aa;
   border-radius: 1vh;
-  padding: 10px 15px;
+  margin-left: 8vh;
   border: none;
-  width: 100%;
 }
 
 .Dropdown-control {
@@ -78,7 +73,7 @@ body {
 
 .container {
   text-align: center;
-  margin: 50px;
+  margin: 1px 50px;
   display: flex;
   border: #857c7c;
   border-style: solid hidden hidden hidden;
@@ -87,18 +82,17 @@ body {
 #containerHeader {
   display: flex;
   margin: 10vh 10vh 0vh 10vh;
-  justify-content: flex-end;
+  justify-content: space-between;
 }
 
 #containerBody p {
   font-size: 20pt;
 }
 
-.container #containerBody {
+#containerBody {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 5vh 10vh 0vh 5vh;
   border: #857c7c;
   border-style: hidden solid hidden hidden;
 }
@@ -107,35 +101,47 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 7vh 10vh;
+  padding: 7vh 10vh;
 }
 
 .filter label {
   font-size: 20pt;
+  position: relative;
   color: #857c7c;
-  margin: 0vh 0vh 2vh 0vh;
-  padding: 2vh;
+  padding: 2vh 10vh;
   cursor: pointer;
 }
 
 .filter label:hover {
   color: #d2b9aa;
-  font-size: 22pt;
+  transform: scale(1.1, 1.1);
   transition: 0.5s ease;
+  /* background-color: #e1dfdf; */
 }
 
 .filter .labelChecked {
   font-size: 20pt;
   color: #907767;
-  margin: 0vh 0vh 2vh 0vh;
   cursor: pointer;
-  background-color: #c3baba;
+  background-color: #d9cdcd;
+  border-radius: 3vh;
   transition: 0.5s ease;
 }
 
 @media screen and (max-width: 1224px) {
   .header .search {
     margin: 0%;
+  }
+  #headerImg {
+    width: 65vh;
+    margin: 0px;
+  }
+  .header p {
+    font-size: 20pt;
+  }
+
+  .filter {
+    padding: 7vh 5vh;
   }
 }
 
@@ -153,6 +159,14 @@ body {
     margin-left: 25vh;
   }
 
+  #containerHeader {
+    flex-direction: column;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+
   .container #containerBody {
     margin-left: 0vh;
     align-items: center;
@@ -161,6 +175,10 @@ body {
     max-width: 110px;
     max-height: 70px;
     padding: 1vh 2vh;
+  }
+
+  .filter {
+    padding: 2vh 0vh;
   }
 }
 
