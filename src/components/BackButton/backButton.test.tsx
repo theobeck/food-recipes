@@ -15,7 +15,7 @@ describe('BackButton', () => {
 
   it('calls navigate on button click', () => {
     const mockNavigate = vi.fn();
-    (useNavigate as vi.Mock).mockImplementation(() => mockNavigate);
+    (useNavigate as jest.Mock).mockImplementation(() => mockNavigate);
 
     render(<BackButton />);
     const backButton = screen.getByAltText('Back Button');
@@ -26,7 +26,7 @@ describe('BackButton', () => {
 
   it('calls navigate on pressing Enter', () => {
     const mockNavigate = vi.fn();
-    (useNavigate as vi.Mock).mockImplementation(() => mockNavigate);
+    (useNavigate as jest.Mock).mockImplementation(() => mockNavigate);
 
     render(<BackButton />);
     const backButton = screen.getByAltText('Back Button');
