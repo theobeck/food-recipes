@@ -145,7 +145,7 @@ body {
   }
 }
 
-@media screen and (max-height: 968px) {
+@media screen and (max-height: 468px) {
   #headerImg {
     display: none;
   }
