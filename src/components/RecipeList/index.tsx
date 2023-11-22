@@ -31,12 +31,12 @@ const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm,
   const [filterChanged, setFilterChanged] = useState<boolean>(false);
 
   const { loading, error, data } = useQuery(RECIPES, {
-    variables: { 
+    variables: {
       offset: (currentPage - 1) * itemsPerPage,
       limit: itemsPerPage,
       sort: selectedSort,
       tags,
-      searchTerm
+      searchTerm,
     },
   });
 
@@ -48,9 +48,9 @@ const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm,
 
   useEffect(() => {
     // Set filterChanged flag when sort, tags, or searchTerm changes
-      setFilterChanged(true);
+    setFilterChanged(true);
   }, [selectedSort, tags, searchTerm]);
-  
+
   useEffect(() => {
     if (filterChanged) {
       setSearchParams({ page: '1' });
@@ -74,11 +74,11 @@ const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm,
   const recipes: Recipe[] = data?.getRecipes?.recipes ?? [];
 
   return (
-    <div className="recipe-list">
+    <div className="recipe-list" data-testid="recipeList">
       {recipes.length === 0 ? (
         <p>No recipes found</p>
       ) : (
-        recipes.map(recipe => <RecipeListItem key={recipe.id} recipe={recipe} />)
+        recipes.map((recipe) => <RecipeListItem key={recipe.id} recipe={recipe} />)
       )}
       <Pagination
         total={totalRecipes}

@@ -15,11 +15,12 @@ const SitePagination: React.FC<SitePaginationProps> = ({ total, itemsPerPage, cu
   return (
     <Stack spacing={2}>
         {totalPages >  0 && (
-      <Pagination 
-        count={totalPages} 
-        page={currentPage} 
+      <Pagination
+        count={totalPages}
+        page={currentPage}
         onChange={setPage}
         color= "standard"
+        data-testid="pagination"
       />
         )}
     </Stack>
