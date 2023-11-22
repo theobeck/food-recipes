@@ -86,7 +86,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
           <div className="filter">
             <label htmlFor="vegetarian" className={vegetarian ? 'labelChecked' : 'labelUnchecked'}  onClick={() => setVegetarian(!vegetarian)}>Vegetarian</label>
             
-            <label className={desert ? 'labelChecked' : 'labelUnchecked'} htmlFor="desert" onClick={() => setDesert(!desert)}>Desert</label>
+            <label className={desert ? 'labelChecked' : 'labelUnchecked'} htmlFor="desert" onClick={() => setDesert(!desert)}>Dessert</label>
          
             <label className={chicken ? 'labelChecked' : 'labelUnchecked'}  htmlFor="chicken" onClick={() => setChicken(!chicken)}
             >Chicken</label>
