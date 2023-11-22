@@ -52,7 +52,6 @@ function MainPage({ itemsPerPage }: MainPageProps) {
         <a href={import.meta.env.BASE_URL}>
           <img id="logo" src={logo} alt="Recipes Logo" />
         </a>
-        <a href='../Categories/index.tsx' className={vegetarian ? 'labelChecked' : 'labelUnchecked'}  onClick={() => setVegetarian(!vegetarian)}>Vegetarian</a>
         <a id="aboutUs" target="_blank" href="https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D">
           About us
         </a>
