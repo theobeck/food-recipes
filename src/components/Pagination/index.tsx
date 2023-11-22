@@ -10,8 +10,6 @@ interface SitePaginationProps {
 
 const SitePagination: React.FC<SitePaginationProps> = ({ total, itemsPerPage, currentPage, setPage }) => {
   const totalPages = Math.ceil(total ? total / itemsPerPage: 0);
-  console.log(totalPages + " " + total + " " + itemsPerPage);
-
   return (
     <Stack spacing={2}>
         {totalPages >  0 && (
