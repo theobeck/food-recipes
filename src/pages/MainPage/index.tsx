@@ -40,6 +40,8 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
 
 
+
+
   //sort Change
   const handleSortChange = (option: Option) => {
     setSelectedSort(option.value);

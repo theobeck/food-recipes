@@ -74,11 +74,11 @@ const RecipeList: React.FC<RecipeListProps> = ({ selectedSort, tags, searchTerm,
   const recipes: Recipe[] = data?.getRecipes?.recipes ?? [];
 
   return (
-    <div className="recipe-list">
+    <div className="recipe-list" data-testid="recipeList">
       {recipes.length === 0 ? (
         <p>No recipes found</p>
       ) : (
-        recipes.map(recipe => <RecipeListItem key={recipe.id} recipe={recipe} />)
+        recipes.map((recipe) => <RecipeListItem key={recipe.id} recipe={recipe} />)
       )}
       <Pagination
         total={totalRecipes}

@@ -28,7 +28,6 @@ export default function Review({ refetch }: ReviewProps) {
 
     const handleSubmit = async () => {
         console.log("Trying to Upload -> Rating: " + rating + " Comment: " + comment + " to ID: " + name);
-        // Here, you can perform any actions with the rating and comment values
         try {
             const result = await addReview({
                 variables: {
