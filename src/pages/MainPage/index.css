@@ -47,19 +47,21 @@ body {
 
 .search div {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   justify-content: space-between;
   background-color: #d2b9aa;
   border-radius: 1vh;
   padding: 10px 15px;
   border: none;
-  width: 30vh;
+  width: 100%;
 }
 
 .Dropdown-control {
   background-color: #d2b9aa;
   border-radius: 1vh;
   padding: 10px 15px;
+  margin-top: 0vh;
+  align-self: baseline;
   border: none;
   width: 30vh;
 }
@@ -84,8 +86,8 @@ body {
 
 #containerHeader {
   display: flex;
-  margin: 10vh 10vh;
-  justify-content: space-between;
+  margin: 10vh 10vh 0vh 10vh;
+  justify-content: flex-end;
 }
 
 #containerBody p {
@@ -96,14 +98,39 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-left: 10vh;
+  padding: 5vh 10vh 0vh 5vh;
+  border: #857c7c;
+  border-style: hidden solid hidden hidden;
 }
 
 .filter {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  margin: 0vh 10vh;
+  margin: 7vh 10vh;
+}
+
+.filter label {
+  font-size: 20pt;
+  color: #857c7c;
+  margin: 0vh 0vh 2vh 0vh;
+  padding: 2vh;
+  cursor: pointer;
+}
+
+.filter label:hover {
+  color: #d2b9aa;
+  font-size: 22pt;
+  transition: 0.5s ease;
+}
+
+.filter .labelChecked {
+  font-size: 20pt;
+  color: #907767;
+  margin: 0vh 0vh 2vh 0vh;
+  cursor: pointer;
+  background-color: #c3baba;
+  transition: 0.5s ease;
 }
 
 @media screen and (max-width: 1224px) {
