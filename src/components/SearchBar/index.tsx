@@ -26,6 +26,7 @@ export default function SearchBar({ setSearchTerm }: SearchBarProps) {
       <img src={searchIcon} alt="Search" />
       <input
         className="search-bar"
+        id='searchBar'
         type="text"
         placeholder="Search"
         value={localSearchTerm}
