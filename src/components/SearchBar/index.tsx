@@ -3,7 +3,7 @@ import './index.css';
 import searchIcon from '../../assets/searchIcon.png';
 
 interface SearchBarProps {
-  setSearchTerm: React.Dispatch<React.SetStateAction<string>>;
+  setSearchTerm: (searchTerm: string) => void;
 }
 
 export default function SearchBar({ setSearchTerm }: SearchBarProps) {
@@ -26,7 +26,7 @@ export default function SearchBar({ setSearchTerm }: SearchBarProps) {
       <img src={searchIcon} alt="Search" />
       <input
         className="search-bar"
-        id='searchBar'
+        id="searchBar"
         type="text"
         placeholder="Search"
         value={localSearchTerm}
