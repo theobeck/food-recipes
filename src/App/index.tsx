@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainPage from '../pages/MainPage';
 import RecipeDetails from '../pages/RecipeDetails';
 import { ApolloClient, ApolloProvider, InMemoryCache } from '@apollo/client';
+import { GlobalProvider } from '../utils/GlobalContext';
 
 const client = new ApolloClient({
   uri: 'http://it2810-13.idi.ntnu.no:4000/',
@@ -12,12 +13,14 @@ const client = new ApolloClient({
 function App() {
   return (
     <ApolloProvider client={client}>
-      <Router>
-        <Routes>
-          <Route path={import.meta.env.BASE_URL + '/recipe/:name'} element={<RecipeDetails />} />
-          <Route path={import.meta.env.BASE_URL} element={<MainPage itemsPerPage={4} />} />
-        </Routes>
-      </Router>
+      <GlobalProvider>
+        <Router>
+          <Routes>
+            <Route path={import.meta.env.BASE_URL + '/recipe/:name'} element={<RecipeDetails />} />
+            <Route path={import.meta.env.BASE_URL} element={<MainPage itemsPerPage={4} />} />
+          </Routes>
+        </Router>
+      </GlobalProvider>
     </ApolloProvider>
   );
 }

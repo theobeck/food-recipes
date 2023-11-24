@@ -9,18 +9,18 @@ interface SitePaginationProps {
 }
 
 const SitePagination: React.FC<SitePaginationProps> = ({ total, itemsPerPage, currentPage, setPage }) => {
-  const totalPages = Math.ceil(total ? total / itemsPerPage: 0);
+  const totalPages = Math.ceil(total ? total / itemsPerPage : 0);
   return (
     <Stack spacing={2}>
-        {totalPages >  0 && (
-      <Pagination
-        count={totalPages}
-        page={currentPage}
-        onChange={setPage}
-        color= "standard"
-        data-testid="pagination"
-      />
-        )}
+      {totalPages > 0 && (
+        <Pagination
+          count={totalPages}
+          page={currentPage}
+          onChange={setPage}
+          color="standard"
+          data-testid="pagination"
+        />
+      )}
     </Stack>
   );
 };
