@@ -83,24 +83,36 @@ function MainPage({ itemsPerPage }: MainPageProps) {
         <div id="containerBody">
 
 
-          <div className="filter">
-            <label htmlFor="vegetarian" className={vegetarian ? 'labelChecked' : 'labelUnchecked'}  onClick={() => setVegetarian(!vegetarian)}>Vegetarian</label>
-            
-            <label className={desert ? 'labelChecked' : 'labelUnchecked'} htmlFor="desert" onClick={() => setDesert(!desert)}>Dessert</label>
-         
-            <label className={chicken ? 'labelChecked' : 'labelUnchecked'}  htmlFor="chicken" onClick={() => setChicken(!chicken)}
-            >Chicken</label>
-           
-            <label className={beef ? 'labelChecked' : 'labelUnchecked'} htmlFor="beef" onClick={() => setBeef(!beef)}>Beef</label>
+        <div className="filter">
+  {/* Vegetarian Checkbox and Label */}
+  <input type="checkbox" id="vegetarian" className="hiddenCheckbox" checked={vegetarian} onChange={() => setVegetarian(!vegetarian)} />
+  <label htmlFor="vegetarian" className={vegetarian ? 'labelChecked' : 'labelUnchecked'}>Vegetarian</label>
+  
+  {/* Dessert Checkbox and Label */}
+  <input type="checkbox" id="desert" className="hiddenCheckbox" checked={desert} onChange={() => setDesert(!desert)} />
+  <label htmlFor="desert" className={desert ? 'labelChecked' : 'labelUnchecked'}>Dessert</label>
 
-            <label className={asian ? 'labelChecked' : 'labelUnchecked'} htmlFor="asian" onClick={() => setAsian(!asian)}>Asian</label>
+  {/* Chicken Checkbox and Label */}
+  <input type="checkbox" id="chicken" className="hiddenCheckbox" checked={chicken} onChange={() => setChicken(!chicken)} />
+  <label htmlFor="chicken" className={chicken ? 'labelChecked' : 'labelUnchecked'}>Chicken</label>
 
-            <label className={japanese ? 'labelChecked' : 'labelUnchecked'} htmlFor="japanese" onClick={() => setJapanese(!japanese)}>Japanese</label>
+  {/* Beef Checkbox and Label */}
+  <input type="checkbox" id="beef" className="hiddenCheckbox" checked={beef} onChange={() => setBeef(!beef)} />
+  <label htmlFor="beef" className={beef ? 'labelChecked' : 'labelUnchecked'}>Beef</label>
 
-            <label className={soup ? 'labelChecked' : 'labelUnchecked'} htmlFor="soup" onClick={() => setSoup(!soup)}>Soup</label>
-            
-              
-          </div>
+  {/* Asian Checkbox and Label */}
+  <input type="checkbox" id="asian" className="hiddenCheckbox" checked={asian} onChange={() => setAsian(!asian)} />
+  <label htmlFor="asian" className={asian ? 'labelChecked' : 'labelUnchecked'}>Asian</label>
+
+  {/* Japanese Checkbox and Label */}
+  <input type="checkbox" id="japanese" className="hiddenCheckbox" checked={japanese} onChange={() => setJapanese(!japanese)} />
+  <label htmlFor="japanese" className={japanese ? 'labelChecked' : 'labelUnchecked'}>Japanese</label>
+
+  {/* Soup Checkbox and Label */}
+  <input type="checkbox" id="soup" className="hiddenCheckbox" checked={soup} onChange={() => setSoup(!soup)} />
+  <label htmlFor="soup" className={soup ? 'labelChecked' : 'labelUnchecked'}>Soup</label>
+</div>
+
         </div>
 
         <RecipeList

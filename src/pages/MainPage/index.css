@@ -127,6 +127,9 @@ body {
   border-radius: 3vh;
   transition: 0.5s ease;
 }
+.hiddenCheckbox {
+  display: none;
+}
 
 @media screen and (max-width: 1224px) {
   .header .search {
