@@ -54,7 +54,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
       <section className="header">
         <div id="headerDiv">
-          <p>Get inspired with recipes from all around the world, made easy and accessable</p>
+          <p>Get inspired with recipes from all around the world, made easy and accessable!</p>
         </div>
 
         <img id="headerImg" src={cooking} alt="cooking image" />
@@ -69,7 +69,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
 
       <div className="container">
         <div id="containerBody">
-          <div className="filter">
+          <div className="filter" data-testid="filter">
             {/* Vegetarian Checkbox and Label */}
             <input
               type="checkbox"
