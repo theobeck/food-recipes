@@ -75,7 +75,7 @@ function RecipeDetails() {
         <div id="rating">
           <h2>Leave a rating!</h2>
 
-          <div className="reviews">
+          <div className="reviews" data-testid="reviews">
             <Review refetch={refetch} />
             <h3>Reviews</h3>
             <ul>
@@ -93,3 +93,27 @@ function RecipeDetails() {
 }
 
 export default RecipeDetails;
+
+// const ratings: number[] = [];
+//     cy.get('recipeListItem').each((recipe) => {
+//       ratings.push(parseFloat(recipe.find('.rating-number').text()));
+//     });
+//     ratings.sort((a, b) => b - a);
+
+// const sortedRecipes = [];
+// cy.get('@recipeListItem').each((recipe) => {
+//   sortedRecipes.push(recipe.find('.recipe-name').text());
+// });
+// console.log(sortedRecipes);
+// sortedRecipes.sort((a, b) => a.localeCompare(b));
+// console.log(sortedRecipes);
+
+// let i = 0;
+// cy.get('@recipeListItem').each((recipe) => {
+//   cy.wrap(recipe).should('contain.text', sortedRecipes[i]);
+//   i++;
+// });
+
+// for (let i = 0; i < sortedRecipes.length; i++) {
+//   cy.get('@recipeListItem').eq(i).should('contain.text', sortedRecipes[i]);
+// }

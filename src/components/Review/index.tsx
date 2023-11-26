@@ -51,7 +51,7 @@ export default function Review({ refetch }: ReviewProps) {
 
       <div className="input">
         <input id="comment" type="text" placeholder="Add a review" value={comment} onChange={handleCommentChange} />
-        <button onClick={handleSubmit}>Submit</button>
+        <button data-testid="submitReview" onClick={handleSubmit}>Submit</button>
       </div>
     </div>
   );
