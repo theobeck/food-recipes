@@ -1,7 +1,8 @@
 describe('Pagination', () => {
   it('should browse different pages and choose one', () => {
+    // Open the main page
     cy.visit('/');
-    // Get the pagination component locator
+    // Get the pagination component and save it as an alias
     cy.get('[data-testid="pagination"]').as('pagination');
 
     // Assert that the page 1 is the one currently active

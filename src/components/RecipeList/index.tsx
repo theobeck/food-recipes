@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
-import RecipeListItem from '../RecipeItem';
+import RecipeListItem from '../RecipeListItem';
 import Pagination from '../Pagination';
 import RECIPES from './queries';
 import { useSearchParams } from 'react-router-dom';
