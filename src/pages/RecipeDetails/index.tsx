@@ -81,7 +81,7 @@ function RecipeDetails() {
             <ul>
               {recipe.reviews.map((review: Review, index: number) => (
                 <li key={index}>
-                  <ReactStars value={review.rating} edit={false} /> - {review.comment}
+                  <ReactStars value={review.rating} edit={false} /> {review.comment}
                 </li>
               ))}
             </ul>
