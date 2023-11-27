@@ -51,6 +51,14 @@ function RecipeDetails() {
         </div>
       </section>
 
+      <section className='recipeTags'>
+        <div id='tagBody'>
+          {recipe.tags.map((tag: string, index: number) => (
+            <div className='singleTag' key={index}> {tag} </div>
+            ))}
+        </div>
+      </section>
+
       <section className="recipe-body">
         <div id="ingredients">
           <h2>Ingredients:</h2>

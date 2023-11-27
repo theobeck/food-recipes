@@ -136,6 +136,26 @@ ul {
   padding: 3vh;
 }
 
+.recipeTags {
+  padding: 10px 25px 10px 25px;
+}
+
+#tagBody {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.singleTag {
+  margin: 5px 10px;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background-color: #f1d6be;
+  font-size: 1.2rem;
+  font-weight: 100;
+  letter-spacing: 0.07em;
+}
+
 @media screen and (max-width: 1010px) {
   .recipe-header {
     flex-direction: column;
