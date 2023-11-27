@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ReactStars from 'react-stars';
 import { useParams } from 'react-router-dom';
 import { ApolloQueryResult, OperationVariables, useMutation } from '@apollo/client';
-import { ADD_REVIEW } from './queries';
+import ADD_REVIEW from './queries';
 
 interface ReviewProps {
   refetch: (variables?: Partial<OperationVariables> | undefined) => Promise<ApolloQueryResult<unknown>>;
