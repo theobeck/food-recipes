@@ -44,10 +44,15 @@ function MainPage({ itemsPerPage }: MainPageProps) {
   return (
     <div className="main-page">
       <section className="nav">
-        <a href={import.meta.env.BASE_URL}>
+        <a href={import.meta.env.BASE_URL} tabIndex={0}>
           <img id="logo" src={logo} alt="Recipes Logo" />
         </a>
-        <a id="aboutUs" target="_blank" href="https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D">
+        <a
+          id="aboutUs"
+          target="_blank"
+          href="https://www.youtube.com/watch?v=xvFZjo5PgG0&pp=ygUIcmlja3JvbGw%3D"
+          tabIndex={0}
+        >
           About us
         </a>
       </section>
@@ -57,7 +62,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
           <p>Get inspired with recipes from all around the world, made easy and accessable!</p>
         </div>
 
-        <img id="headerImg" src={cooking} alt="cooking image" />
+        <img id="headerImg" src={cooking} alt="inspiring image of cooking" />
       </section>
 
       <div id="containerHeader">
@@ -78,7 +83,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
               checked={vegetarian}
               onChange={() => setVegetarian(!vegetarian)}
             />
-            <label htmlFor="vegetarian" className={vegetarian ? 'labelChecked' : 'labelUnchecked'}>
+            <label htmlFor="vegetarian" className={vegetarian ? 'labelChecked' : 'labelUnchecked'} tabIndex={0}>
               Vegetarian
             </label>
 
@@ -90,7 +95,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
               checked={desert}
               onChange={() => setDesert(!desert)}
             />
-            <label htmlFor="desert" className={desert ? 'labelChecked' : 'labelUnchecked'}>
+            <label htmlFor="desert" className={desert ? 'labelChecked' : 'labelUnchecked'} tabIndex={0}>
               Dessert
             </label>
 
@@ -102,7 +107,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
               checked={chicken}
               onChange={() => setChicken(!chicken)}
             />
-            <label htmlFor="chicken" className={chicken ? 'labelChecked' : 'labelUnchecked'}>
+            <label htmlFor="chicken" className={chicken ? 'labelChecked' : 'labelUnchecked'} tabIndex={0}>
               Chicken
             </label>
 
@@ -114,7 +119,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
               checked={beef}
               onChange={() => setBeef(!beef)}
             />
-            <label htmlFor="beef" className={beef ? 'labelChecked' : 'labelUnchecked'}>
+            <label htmlFor="beef" className={beef ? 'labelChecked' : 'labelUnchecked'} tabIndex={0}>
               Beef
             </label>
 
@@ -126,7 +131,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
               checked={asian}
               onChange={() => setAsian(!asian)}
             />
-            <label htmlFor="asian" className={asian ? 'labelChecked' : 'labelUnchecked'}>
+            <label htmlFor="asian" className={asian ? 'labelChecked' : 'labelUnchecked'} tabIndex={0}>
               Asian
             </label>
 
@@ -138,7 +143,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
               checked={japanese}
               onChange={() => setJapanese(!japanese)}
             />
-            <label htmlFor="japanese" className={japanese ? 'labelChecked' : 'labelUnchecked'}>
+            <label htmlFor="japanese" className={japanese ? 'labelChecked' : 'labelUnchecked'} tabIndex={0}>
               Japanese
             </label>
 
@@ -150,7 +155,7 @@ function MainPage({ itemsPerPage }: MainPageProps) {
               checked={soup}
               onChange={() => setSoup(!soup)}
             />
-            <label htmlFor="soup" className={soup ? 'labelChecked' : 'labelUnchecked'}>
+            <label htmlFor="soup" className={soup ? 'labelChecked' : 'labelUnchecked'} tabIndex={0}>
               Soup
             </label>
           </div>

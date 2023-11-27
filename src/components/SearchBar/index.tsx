@@ -31,7 +31,7 @@ export default function SearchBar({ setSearchTerm }: SearchBarProps) {
         placeholder="Search"
         value={localSearchTerm}
         onChange={handleInputChange}
-        autoFocus
+        tabIndex={0}
       />
     </div>
   );

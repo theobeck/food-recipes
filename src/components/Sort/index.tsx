@@ -13,11 +13,13 @@ export default function Sort({ onChange, value }: SortProps) {
   ];
 
   return (
-    <Dropdown
-      options={options}
-      onChange={onChange}
-      value={value} // Control the displayed value
-      placeholder="Select an option"
-    />
+    <div tabIndex={0}>
+      <Dropdown
+        options={options}
+        onChange={onChange}
+        value={value} // Control the displayed value
+        placeholder="Select an option"
+      />
+    </div>
   );
 }
