@@ -1,6 +1,6 @@
 describe('Search funcionality', () => {
   it('should allow a user to search for recipes and navigate to a specific recipe page', () => {
-    // Opens the main page
+    // Open the main page
     cy.visit('/');
 
     //Finds the search bar and types mango

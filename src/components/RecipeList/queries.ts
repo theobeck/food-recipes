@@ -7,6 +7,7 @@ const RECIPES = gql`
         id
         name
         imageUrl
+        tags
         reviews {
           rating
           comment

@@ -9,6 +9,7 @@ const GET_RECIPE = gql`
       description
       ingredients
       instructions
+      tags
       reviews {
         rating
         comment

@@ -34,7 +34,7 @@ export default function RecipeListItem({ recipe }: RecipeListItemProps) {
   }, [reviews]);
 
   return (
-    <div>
+    <div data-testid="recipeListItem">
       <Link to={`${import.meta.env.BASE_URL}/recipe/${id}`} className="recipe-link">
         <img src={imageUrl} alt={name} />
 
