@@ -107,7 +107,7 @@ describe('GraphQL API', () => {
         variables: {
           id: 49,
           rating: 5,
-          comment: "Look mom, I'm reviewing a recipe!",
+          comment: 'Would recommend, perfect post "workout" meal;)',
         },
       },
     }).then((response) => {
