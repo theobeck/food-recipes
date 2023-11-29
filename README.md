@@ -25,14 +25,33 @@ Follow these steps to set up and run the application:
 ### Backend
 
 1. Open a terminal and navigate to the "Backend" folder.
-2. Run `npm install` to install dependencies.
-3. Execute `npm start` to launch the server. (Note: Ensure connection to NTNU network or use VPN for local development).
+2. Run the following command to install dependencies.
+
+```bash
+npm install
+```
+
+3. Execute the following command to launch the server. (Note: Ensure connection to NTNU network or use VPN for local development).
+
+```bash
+npm start
+```
+
 
 ### Frontend
 
 4. Open another terminal and navigate to the project directory.
-5. Run `npm install` to install required dependencies.
-6. Execute `npm run dev` to start the application.
+5. Run the following command to install dependencies:
+
+```bash
+npm install
+```
+
+6. Execute the following commans to start the application:
+
+```bash
+npm run dev
+```
 
 ### Testing
 
