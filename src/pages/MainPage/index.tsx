@@ -15,15 +15,25 @@ interface MainPageProps {
 
 // Defines the main page functional component that displays the recipes
 function MainPage({ itemsPerPage }: MainPageProps) {
-  const [vegetarian, setVegetarian] = useState<boolean>(false);
-  const [desert, setDesert] = useState<boolean>(false);
-  const [chicken, setChicken] = useState<boolean>(false);
-  const [beef, setBeef] = useState<boolean>(false);
-  const [asian, setAsian] = useState<boolean>(false);
-  const [japanese, setJapanese] = useState<boolean>(false);
-  const [soup, setSoup] = useState<boolean>(false);
+  const [vegetarian, setVegetarian] = useState<boolean>(JSON.parse(sessionStorage.getItem('vegetarian') ?? 'false'));
+  const [desert, setDesert] = useState<boolean>(JSON.parse(sessionStorage.getItem('desert') ?? 'false'));
+  const [chicken, setChicken] = useState<boolean>(JSON.parse(sessionStorage.getItem('chicken') ?? 'false'));
+  const [beef, setBeef] = useState<boolean>(JSON.parse(sessionStorage.getItem('beef') ?? 'false'));
+  const [asian, setAsian] = useState<boolean>(JSON.parse(sessionStorage.getItem('asian') ?? 'false'));
+  const [japanese, setJapanese] = useState<boolean>(JSON.parse(sessionStorage.getItem('japanese') ?? 'false'));
+  const [soup, setSoup] = useState<boolean>(JSON.parse(sessionStorage.getItem('soup') ?? 'false'));
 
   const { searchTerm, setSearchTerm, selectedSort, setSelectedSort, setTags, tags } = useGlobalContext();
+
+  useEffect(() => {
+    sessionStorage.setItem('vegetarian', JSON.stringify(vegetarian));
+    sessionStorage.setItem('desert', JSON.stringify(desert));
+    sessionStorage.setItem('chicken', JSON.stringify(chicken));
+    sessionStorage.setItem('beef', JSON.stringify(beef));
+    sessionStorage.setItem('asian', JSON.stringify(asian));
+    sessionStorage.setItem('japanese', JSON.stringify(japanese));
+    sessionStorage.setItem('soup', JSON.stringify(soup));
+  } , [vegetarian, desert, chicken, beef, asian, japanese, soup]);
 
   useEffect(() => {
     const newTags = [];
